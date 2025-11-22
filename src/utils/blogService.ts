@@ -208,7 +208,7 @@ export const blogService = {
       try {
         const { data, error } = await supabase
           .from('blogs')
-          .insert([mapBlogToSupabase(blogData)])
+          .insert([mapBlogToSupabase(blogData)] as any)
           .select()
           .single();
 
@@ -236,15 +236,17 @@ export const blogService = {
   updateBlog: async (id: string, updates: Partial<Blog>): Promise<Blog | null> => {
     if (isSupabaseConfigured()) {
       try {
-        const updateData = mapBlogToSupabase(updates);
-        updateData.updated_at = new Date().toISOString();
+        const updateData: any = {
+          ...mapBlogToSupabase(updates),
+          updated_at: new Date().toISOString()
+        };
 
         const { data, error } = await supabase
           .from('blogs')
           .update(updateData)
           .eq('id', id)
           .select()
-          .single();
+          .single() as any;
 
         if (error) throw error;
         return data ? mapSupabaseToBlog(data) : null;
