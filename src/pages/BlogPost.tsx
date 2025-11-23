@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, User, Tag, ExternalLink, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './BlogPost.module.css';
@@ -9,6 +10,7 @@ import styles from './BlogPost.module.css';
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -62,7 +64,7 @@ export const BlogPost: React.FC = () => {
           className={styles.backButton}
         >
           <ArrowLeft size={20} />
-          <span>Back to all posts</span>
+          <span>{t('blog.backToBlog')}</span>
         </button>
 
         {/* Featured Image */}
@@ -114,7 +116,7 @@ export const BlogPost: React.FC = () => {
         {blog.amazonProducts.length > 0 && (
           <div className={styles.productsSection}>
             <h2 className={styles.productsTitle}>
-              Featured Products
+              {t('blog.products')}
             </h2>
             <div className={styles.productsGrid}>
               {blog.amazonProducts.map((product) => {
@@ -148,7 +150,7 @@ export const BlogPost: React.FC = () => {
                       rel="noopener noreferrer"
                       className={styles.amazonButton}
                     >
-                      <span>Message for More Information</span>
+                      <span>{t('blog.messageForInfo')}</span>
                       <ExternalLink size={18} />
                     </a>
                   </div>

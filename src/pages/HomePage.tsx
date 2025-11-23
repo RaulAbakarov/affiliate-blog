@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './HomePage.module.css';
@@ -9,6 +10,7 @@ import styles from './HomePage.module.css';
 const POSTS_PER_PAGE = 9;
 
 export const HomePage: React.FC = () => {
+  const { t } = useLanguage();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -109,7 +111,7 @@ export const HomePage: React.FC = () => {
             <span className={styles.heroByVusale}>by Vusale</span>
           </div>
           <p className={styles.heroSubtitle}>
-            Premium Swedish Cosmetics & Natural Beauty Solutions
+            {t('hero.subtitle')}
           </p>
         </div>
       </div>
@@ -120,7 +122,7 @@ export const HomePage: React.FC = () => {
           <div className={styles.searchContainer}>
             <input
               type="text"
-              placeholder="Search by title, description, or tags..."
+              placeholder={t('search.placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={styles.searchInput}
@@ -128,14 +130,14 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className={styles.sortContainer}>
-            <label htmlFor="tag" className={styles.sortLabel}>Filter by tag:</label>
+            <label htmlFor="tag" className={styles.sortLabel}>{t('search.filterByTag')}:</label>
             <select
               id="tag"
               value={selectedTag}
               onChange={(e) => setSelectedTag(e.target.value)}
               className={styles.sortSelect}
             >
-              <option value="all">All Tags</option>
+              <option value="all">{t('search.allTags')}</option>
               {allTags.map(tag => (
                 <option key={tag} value={tag}>{tag}</option>
               ))}
@@ -143,16 +145,16 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className={styles.sortContainer}>
-            <label htmlFor="sort" className={styles.sortLabel}>Sort by:</label>
+            <label htmlFor="sort" className={styles.sortLabel}>{t('search.sortBy')}:</label>
             <select
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest' | 'title')}
               className={styles.sortSelect}
             >
-              <option value="newest">Newest First</option>
-              <option value="oldest">Oldest First</option>
-              <option value="title">Title (A-Z)</option>
+              <option value="newest">{t('search.newest')}</option>
+              <option value="oldest">{t('search.oldest')}</option>
+              <option value="title">{t('search.titleAZ')}</option>
             </select>
           </div>
         </div>
@@ -166,11 +168,12 @@ export const HomePage: React.FC = () => {
 
         {blogs.length === 0 ? (
           <div className={styles.emptyState}>
-            <p className={styles.emptyText}>No blog posts available yet.</p>
+            <p className={styles.emptyText}>{t('blog.noPosts')}</p>
+            <p className={styles.emptySubtext}>{t('blog.noPostsDesc')}</p>
           </div>
         ) : sortedBlogs.length === 0 ? (
           <div className={styles.emptyState}>
-            <p className={styles.emptyText}>No posts match your search.</p>
+            <p className={styles.emptyText}>{t('blog.noPosts')}</p>
           </div>
         ) : (
           <>

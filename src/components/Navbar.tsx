@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, LayoutDashboard, MessageCircle, Instagram } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { LogOut, LayoutDashboard, MessageCircle, Instagram, Globe } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export const Navbar: React.FC = () => {
   const { isAuthenticated, logout } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
   const [showLogo, setShowLogo] = useState(false);
+  const [showLangMenu, setShowLangMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +30,11 @@ export const Navbar: React.FC = () => {
               <>
                 <Link to="/admin" className={styles.navLink}>
                   <LayoutDashboard size={18} />
-                  <span>Dashboard</span>
+                  <span>{t('nav.admin')}</span>
                 </Link>
                 <button onClick={logout} className={styles.logoutButton}>
                   <LogOut size={18} />
-                  <span>Logout</span>
+                  <span>{t('nav.logout')}</span>
                 </button>
               </>
             )}
@@ -50,6 +53,31 @@ export const Navbar: React.FC = () => {
           </Link>
 
           <div className={styles.rightNav}>
+            <div className={styles.languageSwitcher}>
+              <button 
+                className={styles.langButton}
+                onClick={() => setShowLangMenu(!showLangMenu)}
+              >
+                <Globe size={18} />
+                <span>{language === 'en' ? 'EN' : 'AZ'}</span>
+              </button>
+              {showLangMenu && (
+                <div className={styles.langMenu}>
+                  <button 
+                    className={`${styles.langOption} ${language === 'en' ? styles.active : ''}`}
+                    onClick={() => { setLanguage('en'); setShowLangMenu(false); }}
+                  >
+                    English
+                  </button>
+                  <button 
+                    className={`${styles.langOption} ${language === 'az' ? styles.active : ''}`}
+                    onClick={() => { setLanguage('az'); setShowLangMenu(false); }}
+                  >
+                    Azərbaycan
+                  </button>
+                </div>
+              )}
+            </div>
             <a 
               href="https://instagram.com/" 
               target="_blank" 
@@ -66,7 +94,7 @@ export const Navbar: React.FC = () => {
               className={styles.contactButton}
             >
               <MessageCircle size={18} />
-              <span>Contact Us</span>
+              <span>{t('nav.contactUs')}</span>
             </a>
           </div>
         </div>

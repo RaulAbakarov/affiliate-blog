@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -27,15 +29,15 @@ export const Footer: React.FC = () => {
             <div className={styles.linkColumn}>
               <h4 className={styles.linkTitle}>Quick Links</h4>
               <Link to="/" className={styles.link}>Home</Link>
-              <Link to="/about" className={styles.link}>About Us</Link>
-              <Link to="/contact" className={styles.link}>Contact</Link>
+              <Link to="/about" className={styles.link}>{t('footer.about')}</Link>
+              <Link to="/contact" className={styles.link}>{t('footer.contact')}</Link>
             </div>
 
             <div className={styles.linkColumn}>
               <h4 className={styles.linkTitle}>Legal</h4>
-              <Link to="/privacy" className={styles.link}>Privacy Policy</Link>
-              <Link to="/terms" className={styles.link}>Terms of Service</Link>
-              <Link to="/disclaimer" className={styles.link}>Disclaimer</Link>
+              <Link to="/privacy" className={styles.link}>{t('footer.privacy')}</Link>
+              <Link to="/terms" className={styles.link}>{t('footer.terms')}</Link>
+              <Link to="/disclaimer" className={styles.link}>{t('footer.disclaimer')}</Link>
             </div>
 
             <div className={styles.linkColumn}>
@@ -57,7 +59,7 @@ export const Footer: React.FC = () => {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} Oriflame by Vusale. All rights reserved.
+            © {currentYear} Oriflame by Vusale. {t('footer.copyright')}
           </p>
           <p className={styles.disclaimer}>
             Independent Oriflame consultant. Premium Swedish cosmetics.

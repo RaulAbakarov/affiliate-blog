@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Plus, Edit, Trash2, Eye, Search } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './AdminDashboard.module.css';
 
 export const AdminDashboard: React.FC = () => {
+  const { t } = useLanguage();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
@@ -29,8 +31,8 @@ export const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleDelete = async (id: string, title: string) => {
-    if (window.confirm(`Are you sure you want to delete "${title}"?\n\nThis action cannot be undone.`)) {
+  const handleDelete = async (id: string) => {
+    if (window.confirm(t('admin.confirmDelete'))) {
       try {
         const success = await blogService.deleteBlog(id);
         if (success) {
@@ -56,8 +58,8 @@ export const AdminDashboard: React.FC = () => {
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.headerSection}>
-          <h1 className={styles.title}>Admin Dashboard</h1>
-          <p className={styles.subtitle}>Manage your blog posts</p>
+          <h1 className={styles.title}>{t('admin.dashboard')}</h1>
+          <p className={styles.subtitle}>{t('admin.manage')}</p>
         </div>
 
         {/* Actions Bar */}
@@ -66,7 +68,7 @@ export const AdminDashboard: React.FC = () => {
             <Search className={styles.searchIcon} size={20} />
             <input
               type="text"
-              placeholder="Search blogs..."
+              placeholder={t('admin.search')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={styles.searchInput}
@@ -77,24 +79,24 @@ export const AdminDashboard: React.FC = () => {
             className={styles.newPostButton}
           >
             <Plus size={20} />
-            <span>New Blog Post</span>
+            <span>{t('admin.newPost')}</span>
           </Link>
         </div>
 
         {/* Stats Cards */}
         <div className={styles.statsGrid}>
           <div className={styles.statCard}>
-            <h3 className={styles.statLabel}>Total Posts</h3>
+            <h3 className={styles.statLabel}>{t('admin.totalPosts')}</h3>
             <p className={styles.statValue}>{blogs.length}</p>
           </div>
           <div className={styles.statCard}>
-            <h3 className={styles.statLabel}>Published</h3>
+            <h3 className={styles.statLabel}>{t('admin.publishedPosts')}</h3>
             <p className={`${styles.statValue} ${styles.published}`}>
               {blogs.filter(b => b.published).length}
             </p>
           </div>
           <div className={styles.statCard}>
-            <h3 className={styles.statLabel}>Drafts</h3>
+            <h3 className={styles.statLabel}>{t('admin.draftPosts')}</h3>
             <p className={`${styles.statValue} ${styles.drafts}`}>
               {blogs.filter(b => !b.published).length}
             </p>
@@ -119,16 +121,16 @@ export const AdminDashboard: React.FC = () => {
                 <thead className={styles.thead}>
                   <tr>
                     <th className={styles.th}>
-                      Title
+                      {t('admin.title')}
                     </th>
                     <th className={styles.th}>
-                      Status
+                      {t('admin.status')}
                     </th>
                     <th className={styles.th}>
-                      Date
+                      {t('admin.date')}
                     </th>
                     <th className={`${styles.th} ${styles.thRight}`}>
-                      Actions
+                      {t('admin.actions')}
                     </th>
                   </tr>
                 </thead>
@@ -156,7 +158,7 @@ export const AdminDashboard: React.FC = () => {
                               : styles.badgeDraft
                           }`}
                         >
-                          {blog.published ? 'Published' : 'Draft'}
+                          {blog.published ? t('admin.published') : t('admin.draft')}
                         </span>
                       </td>
                       <td className={styles.td}>
@@ -181,7 +183,7 @@ export const AdminDashboard: React.FC = () => {
                             <Edit size={18} />
                           </button>
                           <button
-                            onClick={() => handleDelete(blog.id, blog.title)}
+                            onClick={() => handleDelete(blog.id)}
                             className={`${styles.actionButton} ${styles.delete}`}
                             title="Delete"
                           >

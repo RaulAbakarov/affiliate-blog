@@ -36,6 +36,66 @@
   gap: 1rem;
 }
 
+.languageSwitcher {
+  position: relative;
+}
+
+.langButton {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.langButton:hover {
+  background: var(--gray-200);
+  border-color: var(--gray-300);
+}
+
+.langMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  min-width: 140px;
+  z-index: 1000;
+}
+
+.langOption {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: white;
+  color: var(--gray-700);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.langOption:hover {
+  background: var(--gray-50);
+}
+
+.langOption.active {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-weight: 600;
+}
+
 .socialButton {
   display: flex;
   align-items: center;
