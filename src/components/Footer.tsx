@@ -21,27 +21,27 @@ export const Footer: React.FC = () => {
               <span className={styles.footerByVusale}>by Vusale</span>
             </div>
             <p className={styles.brandDescription}>
-              Your independent consultant for premium Swedish cosmetics and natural beauty products
+              {t('footer.brandDescription')}
             </p>
           </div>
 
           <div className={styles.links}>
             <div className={styles.linkColumn}>
-              <h4 className={styles.linkTitle}>Quick Links</h4>
-              <Link to="/" className={styles.link}>Home</Link>
+              <h4 className={styles.linkTitle}>{t('footer.quickLinks')}</h4>
+              <Link to="/" className={styles.link}>{t('footer.home')}</Link>
               <Link to="/about" className={styles.link}>{t('footer.about')}</Link>
               <Link to="/contact" className={styles.link}>{t('footer.contact')}</Link>
             </div>
 
             <div className={styles.linkColumn}>
-              <h4 className={styles.linkTitle}>Legal</h4>
+              <h4 className={styles.linkTitle}>{t('footer.legal')}</h4>
               <Link to="/privacy" className={styles.link}>{t('footer.privacy')}</Link>
               <Link to="/terms" className={styles.link}>{t('footer.terms')}</Link>
               <Link to="/disclaimer" className={styles.link}>{t('footer.disclaimer')}</Link>
             </div>
 
             <div className={styles.linkColumn}>
-              <h4 className={styles.linkTitle}>Follow Us</h4>
+              <h4 className={styles.linkTitle}>{t('footer.followUs')}</h4>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.link}>
                 Twitter
               </a>
@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
             © {currentYear} Oriflame by Vusale. {t('footer.copyright')}
           </p>
           <p className={styles.disclaimer}>
-            Independent Oriflame consultant. Premium Swedish cosmetics.
+            {t('footer.watermark')}
           </p>
         </div>
       </div>

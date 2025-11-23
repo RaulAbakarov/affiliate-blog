@@ -89,7 +89,13 @@ const translations: Record<Language, any> = {
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       disclaimer: 'Disclaimer',
-      copyright: 'All rights reserved.'
+      copyright: 'All rights reserved.',
+      quickLinks: 'Quick Links',
+      home: 'Home',
+      legal: 'Legal',
+      followUs: 'Follow Us',
+      brandDescription: 'Your independent consultant for premium Swedish cosmetics and natural beauty products',
+      watermark: 'Independent Oriflame consultant. Premium Swedish cosmetics.'
     },
     about: {
       title: 'About Oriflame by Vusale',
@@ -254,7 +260,13 @@ const translations: Record<Language, any> = {
       privacy: 'Məxfilik Siyasəti',
       terms: 'İstifadə Şərtləri',
       disclaimer: 'İmtina',
-      copyright: 'Bütün hüquqlar qorunur.'
+      copyright: 'Bütün hüquqlar qorunur.',
+      quickLinks: 'Sürətli Keçidlər',
+      home: 'Ana Səhifə',
+      legal: 'Hüquqi',
+      followUs: 'Bizi İzləyin',
+      brandDescription: 'Premium İsveç kosmetikası və təbii gözəllik məhsulları üzrə müstəqil məsləhətçiniz',
+      watermark: 'Müstəqil Oriflame məsləhətçisi. Premium İsveç kosmetikası.'
     },
     about: {
       title: 'Vüsalə tərəfindən Oriflame Haqqında',
