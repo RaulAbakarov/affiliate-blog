@@ -27,7 +27,7 @@ export const ScrollToTop: React.FC = () => {
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      <ChevronUp size={20} strokeWidth={2.5} />
+      <ChevronUp size={24} />
     </button>
   );
 };

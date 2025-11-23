@@ -2,39 +2,37 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.5rem;
-  background: white;
-  color: #1f2937;
-  border: 1px solid #e5e7eb;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.2s ease;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
   pointer-events: none;
   z-index: 1000;
 }
 
 .scrollButton.visible {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0);
   pointer-events: auto;
 }
 
 .scrollButton:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
 }
 
 .scrollButton:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 /* Mobile responsive */
@@ -44,12 +42,5 @@
     right: 1.5rem;
     width: 2.5rem;
     height: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .scrollButton {
-    bottom: 1rem;
-    right: 1rem;
   }
 }
