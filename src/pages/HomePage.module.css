@@ -43,13 +43,13 @@
 }
 
 .heroLogo {
-  height: 4rem;
+  height: 5rem;
   width: auto;
   filter: brightness(0) invert(1);
 }
 
 .heroByVusale {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-style: italic;
   opacity: 0.9;

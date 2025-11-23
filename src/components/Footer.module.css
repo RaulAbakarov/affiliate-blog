@@ -34,13 +34,13 @@
 }
 
 .footerLogo {
-  height: 2.5rem;
+  height: 3rem;
   width: auto;
   filter: brightness(0) invert(1);
 }
 
 .footerByVusale {
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   font-style: italic;
   color: rgba(255, 255, 255, 0.8);
