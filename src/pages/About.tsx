@@ -7,43 +7,44 @@ export const About: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>About Oriflame by Vusale</h1>
-          <p className={styles.subtitle}>Your Trusted Source for Honest Tech Reviews</p>
+          <p className={styles.subtitle}>Your Trusted Source for Premium Swedish Beauty</p>
         </div>
 
         <div className={styles.content}>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Who We Are</h2>
             <p className={styles.text}>
-              TecHoneStory is a technology review and recommendation platform dedicated to helping you make informed
-              purchasing decisions. We provide honest, unbiased reviews of the latest tech products, gadgets, and services.
+              Oriflame by Vusale is your dedicated independent consultant for premium Swedish cosmetics and natural beauty products.
+              We provide authentic Oriflame products, personalized beauty consultations, and honest reviews to help you discover
+              the perfect products for your skin and wellness needs.
             </p>
           </section>
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Our Mission</h2>
             <p className={styles.text}>
-              Our mission is to bridge the gap between technology and consumers by providing comprehensive, honest reviews
-              that help you choose the right products for your needs. We believe in transparency, integrity, and putting
-              our readers first.
+              Our mission is to help you discover the transformative power of natural Swedish cosmetics. We provide personalized
+              consultations, genuine product recommendations, and beauty tips that enhance your natural radiance. We believe in
+              transparency, quality, and empowering you to look and feel your best.
             </p>
           </section>
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>What We Do</h2>
             <p className={styles.text}>
-              We thoroughly test and review various tech products, from smartphones and laptops to smart home devices and
-              accessories. Our team of experienced reviewers provides in-depth analysis, pros and cons, and real-world usage
-              experiences to help you make the best choice.
+              We offer authentic Oriflame products including skincare, makeup, fragrances, wellness supplements, and personal care items.
+              As your independent consultant, Vusale provides personalized recommendations, beauty tips, and ongoing support to help you
+              achieve your beauty and wellness goals. Every product is backed by Swedish quality and natural ingredients.
             </p>
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Affiliate Disclosure</h2>
+            <h2 className={styles.sectionTitle}>Why Choose Oriflame?</h2>
             <p className={styles.text}>
-              Oriflame by Vusale is an independent consultant sharing genuine product reviews and beauty tips.
-              We connect you directly with authentic Oriflame products and personalized consultations.
-              When you purchase products through our affiliate links, we may earn a commission at no extra cost to you.
-              This helps support our work and allows us to continue providing quality content.
+              Oriflame by Vusale is your independent consultant for premium Swedish cosmetics with over 50 years of heritage.
+              We offer authentic natural beauty products, personalized consultations, and direct delivery to your door.
+              Every product is crafted with care, tested for quality, and designed to enhance your natural beauty.
+              Contact us via WhatsApp for personalized recommendations and exclusive offers.
             </p>
           </section>
         </div>

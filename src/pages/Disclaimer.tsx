@@ -22,10 +22,11 @@ export const Disclaimer: React.FC = () => {
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>2. Product Reviews</h2>
+            <h2 className={styles.sectionTitle}>2. Product Information</h2>
             <p className={styles.text}>
-              Our product reviews represent our honest opinions based on our testing and research. Your experience 
-              with products may differ. We are not responsible for any decisions made based on our reviews.
+              Our product descriptions and recommendations represent genuine Oriflame products and honest opinions based on 
+              our experience. Individual results may vary depending on skin type, age, and other factors. We recommend consulting
+              with Vusale for personalized product recommendations tailored to your specific needs.
             </p>
           </section>
 
@@ -36,9 +37,8 @@ export const Disclaimer: React.FC = () => {
               We connect customers directly with genuine Oriflame products and may earn commissions from sales.
             </p>
             <p className={styles.text}>
-              All products featured are authentic Oriflame cosmetics. Prices and availability are subject to change. 
-              through one of our affiliate links, we receive a small commission at no extra cost to you. This helps 
-              support our work and allows us to continue providing quality content.
+              All products featured are authentic Oriflame cosmetics backed by Swedish quality standards. Prices and availability
+              are subject to change. We provide personalized consultations to help you find the perfect products for your needs.
             </p>
           </section>
 
@@ -63,9 +63,9 @@ export const Disclaimer: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>6. Professional Advice</h2>
             <p className={styles.text}>
-              The content on Oriflame by Vusale is not intended to be a substitute for professional advice. Always seek 
-              the advice of qualified professionals with any questions you may have regarding technical issues or 
-              product purchases.
+              The beauty and wellness information on Oriflame by Vusale is not intended to replace professional dermatological
+              or medical advice. If you have specific skin conditions, allergies, or health concerns, please consult with
+              qualified healthcare professionals before using any cosmetic products.
             </p>
           </section>
 
