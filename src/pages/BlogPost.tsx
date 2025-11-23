@@ -110,48 +110,50 @@ export const BlogPost: React.FC = () => {
           />
         </div>
 
-        {/* Amazon Products Section */}
+        {/* Products Section */}
         {blog.amazonProducts.length > 0 && (
           <div className={styles.productsSection}>
             <h2 className={styles.productsTitle}>
               Featured Products
             </h2>
             <div className={styles.productsGrid}>
-              {blog.amazonProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className={styles.productCard}
-                >
-                  <img
-                    src={product.imageUrl}
-                    alt={product.title}
-                    className={styles.productImage}
-                  />
-                  <h3 className={styles.productTitle}>
-                    {product.title}
-                  </h3>
-                  {product.description && (
-                    <p className={styles.productDescription}>{product.description}</p>
-                  )}
-                  {product.price && (
-                    <p className={styles.productPrice}>
-                      {product.price}
-                    </p>
-                  )}
-                  <a
-                    href={product.affiliateLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.amazonButton}
+              {blog.amazonProducts.map((product) => {
+                const whatsappMessage = `Hi, I'm interested in learning more about *${product.title}*${product.price ? ` (${product.price})` : ''}. Can you provide more details?`;
+                const whatsappLink = `https://wa.me/${product.whatsappNumber || ''}?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                return (
+                  <div
+                    key={product.id}
+                    className={styles.productCard}
                   >
-                    <span>View on Amazon</span>
-                    <ExternalLink size={18} />
-                  </a>
-                  <p className={styles.disclaimer}>
-                    As an Amazon Associate, I earn from qualifying purchases.
-                  </p>
-                </div>
-              ))}
+                    <img
+                      src={product.imageUrl}
+                      alt={product.title}
+                      className={styles.productImage}
+                    />
+                    <h3 className={styles.productTitle}>
+                      {product.title}
+                    </h3>
+                    {product.description && (
+                      <p className={styles.productDescription}>{product.description}</p>
+                    )}
+                    {product.price && (
+                      <p className={styles.productPrice}>
+                        {product.price}
+                      </p>
+                    )}
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.amazonButton}
+                    >
+                      <span>Message for More Information</span>
+                      <ExternalLink size={18} />
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

@@ -89,7 +89,7 @@ export const BlogEditor: React.FC = () => {
       author: 'Admin',
       published,
       tags,
-      amazonProducts: amazonProducts.filter(p => p.title && p.affiliateLink),
+      amazonProducts: amazonProducts.filter(p => p.title && p.whatsappNumber),
     };
 
     try {
@@ -254,7 +254,7 @@ export const BlogEditor: React.FC = () => {
             <div className={styles.formGroup}>
               <div className={styles.productsHeader}>
                 <label className={styles.label}>
-                  Amazon Affiliate Products
+                  Featured Products
                 </label>
                 <button
                   type="button"
@@ -287,11 +287,11 @@ export const BlogEditor: React.FC = () => {
                       placeholder="Product title"
                     />
                     <input
-                      type="url"
-                      value={product.affiliateLink}
-                      onChange={(e) => handleUpdateProduct(index, 'affiliateLink', e.target.value)}
+                      type="tel"
+                      value={product.whatsappNumber || ''}
+                      onChange={(e) => handleUpdateProduct(index, 'whatsappNumber', e.target.value)}
                       className={styles.productInput}
-                      placeholder="Amazon affiliate link"
+                      placeholder="WhatsApp number (e.g., 1234567890)"
                     />
                     <input
                       type="url"
