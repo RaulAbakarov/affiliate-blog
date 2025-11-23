@@ -20,6 +20,11 @@
   z-index: 1000;
 }
 
+.scrollButton svg {
+  color: white;
+  stroke: white;
+}
+
 .scrollButton.visible {
   opacity: 1;
   transform: translateY(0);
