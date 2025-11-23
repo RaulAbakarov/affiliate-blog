@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
@@ -193,30 +193,47 @@ export const HomePage: React.FC = () => {
           <>
             <div className={styles.grid}>
               {currentBlogs.map((blog) => (
-                <Link key={blog.id} to={`/blog/${blog.slug}`} className={styles.blogCard}>
-                  <img
-                    src={blog.featuredImage}
-                    alt={blog.title}
-                    className={styles.blogImage}
-                  />
-                  <div className={styles.blogContent}>
-                    <h2 className={styles.blogTitle}>{blog.title}</h2>
-                    <p className={styles.blogExcerpt}>{blog.excerpt}</p>
-                    
-                    <div className={styles.blogMeta}>
-                      <div className={styles.metaItem}>
-                        <Calendar size={16} />
-                        <span>{format(new Date(blog.createdAt), 'MMM dd, yyyy')}</span>
-                      </div>
-                      {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).length > 0 && (
+                <div key={blog.id} className={styles.blogCard}>
+                  <Link to={`/blog/${blog.slug}`} className={styles.blogCardLink}>
+                    <img
+                      src={blog.featuredImage}
+                      alt={blog.title}
+                      className={styles.blogImage}
+                    />
+                    <div className={styles.blogContent}>
+                      <h2 className={styles.blogTitle}>{blog.title}</h2>
+                      <p className={styles.blogExcerpt}>{blog.excerpt}</p>
+                      
+                      <div className={styles.blogMeta}>
                         <div className={styles.metaItem}>
-                          <Tag size={16} />
-                          <span>{blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag))[0]}</span>
+                          <Calendar size={16} />
+                          <span>{format(new Date(blog.createdAt), 'MMM dd, yyyy')}</span>
                         </div>
-                      )}
+                        {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).length > 0 && (
+                          <div className={styles.metaItem}>
+                            <Tag size={16} />
+                            <span>{blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag))[0]}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                  
+                  {blog.amazonProducts && blog.amazonProducts.length > 0 && blog.amazonProducts[0].whatsappNumber && (
+                    <div className={styles.cardActions}>
+                      <a
+                        href={`https://wa.me/${blog.amazonProducts[0].whatsappNumber}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.messageButton}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <MessageCircle size={18} />
+                        <span>{t('blog.messageForInfo')}</span>
+                      </a>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
 
