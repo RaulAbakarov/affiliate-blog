@@ -12,7 +12,7 @@ const LANGUAGE_TAGS = ['lang:en', 'lang:az', 'lang:ru'];
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -122,7 +122,15 @@ export const BlogPost: React.FC = () => {
             </h2>
             <div className={styles.productsGrid}>
               {blog.amazonProducts.map((product) => {
-                const whatsappMessage = `Hi, I'm interested in learning more about *${product.title}*${product.price ? ` (${product.price})` : ''}. Can you provide more details?`;
+                // Create WhatsApp message based on language
+                let whatsappMessage = '';
+                if (language === 'az') {
+                  whatsappMessage = `Salam, *${product.title}*${product.price ? ` (${product.price})` : ''} haqqında ətraflı məlumat almaq istəyirəm. Əlavə təfərrüatlar verə bilərsinizmi?`;
+                } else if (language === 'ru') {
+                  whatsappMessage = `Здравствуйте, я хотел бы узнать больше о *${product.title}*${product.price ? ` (${product.price})` : ''}. Можете предоставить более подробную информацию?`;
+                } else {
+                  whatsappMessage = `Hi, I'm interested in learning more about *${product.title}*${product.price ? ` (${product.price})` : ''}. Can you provide more details?`;
+                }
                 const whatsappLink = `https://wa.me/${product.whatsappNumber || ''}?text=${encodeURIComponent(whatsappMessage)}`;
                 
                 return (
