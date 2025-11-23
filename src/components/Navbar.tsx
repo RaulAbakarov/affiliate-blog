@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
               <Instagram size={20} />
             </a>
             <a 
-              href="https://wa.me/" 
+              href="https://wa.me/994507842470" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.contactButton}

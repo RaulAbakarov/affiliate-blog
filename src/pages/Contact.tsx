@@ -22,6 +22,9 @@ export const Contact: React.FC = () => {
               <MessageCircle className={styles.icon} size={24} />
               <div>
                 <h3 className={styles.itemTitle}>{t('contact.whatsapp')}</h3>
+                <a href="https://wa.me/994507842470" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                  +994 50 784 24 70
+                </a>
                 <p className={styles.itemText}>{t('contact.whatsappDesc')}</p>
               </div>
             </div>
