@@ -36,15 +36,26 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%) translateY(-20px);
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: all 0.4s ease;
   opacity: 0;
   pointer-events: none;
+  text-decoration: none;
+}
+
+.logoImage {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.byVusale {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  font-style: italic;
 }
 
 .centerLogo.visible {

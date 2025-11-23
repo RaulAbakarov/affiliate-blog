@@ -41,7 +41,12 @@ export const Navbar: React.FC = () => {
             to="/" 
             className={`${styles.centerLogo} ${showLogo ? styles.visible : ''}`}
           >
-            Oriflame by Vusale
+            <img 
+              src="https://1000logos.net/wp-content/uploads/2020/04/Oriflame-Logo-1977.png" 
+              alt="Oriflame" 
+              className={styles.logoImage}
+            />
+            <span className={styles.byVusale}>by Vusale</span>
           </Link>
 
           <div className={styles.rightNav}></div>
