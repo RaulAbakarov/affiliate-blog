@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -108,10 +110,11 @@ export const BlogPost: React.FC = () => {
           )}
 
           {/* Blog Content */}
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-          />
+          <div className={styles.content}>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {blog.content}
+            </ReactMarkdown>
+          </div>
         </div>
 
         {/* Products Section */}

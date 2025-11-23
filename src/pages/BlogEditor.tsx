@@ -1,6 +1,6 @@
-import React, { useState, useEffect, lazy, Suspense, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import 'react-quill/dist/quill.snow.css';
+import MDEditor from '@uiw/react-md-editor';
 import { blogService } from '../utils/blogService';
 import type { AmazonProduct } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -8,9 +8,6 @@ import { ArrowLeft, Plus, Trash2, Save } from 'lucide-react';
 import styles from './BlogEditor.module.css';
 
 const LANGUAGE_TAGS = ['lang:en', 'lang:az', 'lang:ru'];
-
-// Lazy load ReactQuill to avoid SSR issues with React 19
-const ReactQuill = lazy(() => import('react-quill').then(module => ({ default: module.default })));
 
 export const BlogEditor: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -128,16 +125,6 @@ export const BlogEditor: React.FC = () => {
     }
   };
 
-  const modules = useMemo(() => ({
-    toolbar: [
-      [{ header: [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      ['link', 'image'],
-      ['clean'],
-    ],
-  }), []);
-
   return (
     <div className={styles.editor}>
       <div className={styles.container}>
@@ -210,22 +197,20 @@ export const BlogEditor: React.FC = () => {
             {/* Content Editor */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                Content *
+                Content * (Markdown Supported)
               </label>
-              <Suspense fallback={
-                <div className={styles.quillPlaceholder}>
-                  Loading editor...
-                </div>
-              }>
-                <ReactQuill
-                  theme="snow"
+              <div data-color-mode="light">
+                <MDEditor
                   value={content}
-                  onChange={setContent}
-                  modules={modules}
-                  className={styles.quillContainer}
-                  placeholder="Write your blog content here..."
+                  onChange={(val) => setContent(val || '')}
+                  height={400}
+                  preview="live"
+                  className={styles.mdEditor}
                 />
-              </Suspense>
+              </div>
+              <p className={styles.helpText}>
+                Use Markdown syntax: **bold**, *italic*, # headings, [link](url), ![image](url), etc.
+              </p>
             </div>
 
             {/* Post Language Selector */}

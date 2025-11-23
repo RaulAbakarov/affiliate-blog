@@ -65,6 +65,27 @@
   margin-bottom: 0.5rem;
 }
 
+.mdEditor {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--gray-200);
+  margin-top: 0.5rem;
+}
+
+.mdEditor :global(.w-md-editor-toolbar) {
+  background-color: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 8px;
+}
+
+.mdEditor :global(.w-md-editor-content) {
+  background-color: white;
+}
+
+.mdEditor :global(.w-md-editor-preview) {
+  padding: 1rem;
+}
+
 .helpText {
   font-size: 0.75rem;
   color: var(--gray-500);
