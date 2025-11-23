@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, LayoutDashboard } from 'lucide-react';
+import { LogOut, LayoutDashboard, MessageCircle } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export const Navbar: React.FC = () => {
@@ -49,7 +49,17 @@ export const Navbar: React.FC = () => {
             <span className={styles.byVusale}>by Vusale</span>
           </Link>
 
-          <div className={styles.rightNav}></div>
+          <div className={styles.rightNav}>
+            <a 
+              href="https://wa.me/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.contactButton}
+            >
+              <MessageCircle size={18} />
+              <span>Contact Us</span>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
