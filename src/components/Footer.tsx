@@ -10,7 +10,14 @@ export const Footer: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.brand}>
-            <h3 className={styles.brandName}>Oriflame by Vusale</h3>
+            <div className={styles.brandName}>
+              <img 
+                src="https://1000logos.net/wp-content/uploads/2020/04/Oriflame-Logo-1977.png" 
+                alt="Oriflame" 
+                className={styles.footerLogo}
+              />
+              <span className={styles.footerByVusale}>by Vusale</span>
+            </div>
             <p className={styles.brandDescription}>
               Your independent consultant for premium Swedish cosmetics and natural beauty products
             </p>

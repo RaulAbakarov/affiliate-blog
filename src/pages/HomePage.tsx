@@ -63,7 +63,14 @@ export const HomePage: React.FC = () => {
     <div className={styles.homePage}>
       <div className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Oriflame by Vusale</h1>
+          <div className={styles.heroTitle}>
+            <img 
+              src="https://1000logos.net/wp-content/uploads/2020/04/Oriflame-Logo-1977.png" 
+              alt="Oriflame" 
+              className={styles.heroLogo}
+            />
+            <span className={styles.heroByVusale}>by Vusale</span>
+          </div>
           <p className={styles.heroSubtitle}>
             Premium Swedish Cosmetics & Natural Beauty Solutions
           </p>

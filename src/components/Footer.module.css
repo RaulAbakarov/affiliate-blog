@@ -25,13 +25,25 @@
 }
 
 .brandName {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.75rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin: 0;
+}
+
+.footerLogo {
+  height: 2.5rem;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footerByVusale {
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .brandDescription {
