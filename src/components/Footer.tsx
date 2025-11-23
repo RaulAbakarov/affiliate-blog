@@ -50,10 +50,10 @@ export const Footer: React.FC = () => {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} TecHoneStory. All rights reserved.
+            © {currentYear} Oriflame by Vusale. All rights reserved.
           </p>
           <p className={styles.disclaimer}>
-            As an Amazon Associate, we earn from qualifying purchases.
+            Independent Oriflame consultant. Premium Swedish cosmetics.
           </p>
         </div>
       </div>
