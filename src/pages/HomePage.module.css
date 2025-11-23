@@ -49,11 +49,11 @@
 }
 
 .heroByVusale {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 100;
   font-style: italic;
   opacity: 0.9;
-  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .heroSubtitle {
