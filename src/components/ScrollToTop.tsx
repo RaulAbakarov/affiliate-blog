@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronUp } from 'lucide-react';
 import styles from './ScrollToTop.module.css';
 
 export const ScrollToTop: React.FC = () => {
