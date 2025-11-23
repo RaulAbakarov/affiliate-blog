@@ -65,7 +65,7 @@ export const HomePage: React.FC = () => {
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Oriflame by Vusale</h1>
           <p className={styles.heroSubtitle}>
-            Discover the best products and recommendations for your lifestyle
+            Premium Swedish Cosmetics & Natural Beauty Solutions
           </p>
         </div>
       </div>

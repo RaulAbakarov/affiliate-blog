@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
           <div className={styles.brand}>
             <h3 className={styles.brandName}>Oriflame by Vusale</h3>
             <p className={styles.brandDescription}>
-              Your trusted source for honest tech reviews and recommendations
+              Your independent consultant for premium Swedish cosmetics and natural beauty products
             </p>
           </div>
 
