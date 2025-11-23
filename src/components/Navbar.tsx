@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
               )}
             </div>
             <a 
-              href="https://instagram.com/" 
+              href="https://www.instagram.com/_vusale_oriflame_/" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.socialButton}

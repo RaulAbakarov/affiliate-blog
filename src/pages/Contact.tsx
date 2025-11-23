@@ -44,6 +44,9 @@ export const Contact: React.FC = () => {
               <Instagram className={styles.icon} size={24} />
               <div>
                 <h3 className={styles.itemTitle}>{t('contact.followMe')}</h3>
+                <a href="https://www.instagram.com/_vusale_oriflame_/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                  @_vusale_oriflame_
+                </a>
                 <p className={styles.itemText}>{t('contact.socialDesc')}</p>
               </div>
             </div>

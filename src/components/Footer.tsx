@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.link}>
                 Facebook
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.link}>
+              <a href="https://www.instagram.com/_vusale_oriflame_/" target="_blank" rel="noopener noreferrer" className={styles.link}>
                 Instagram
               </a>
             </div>
