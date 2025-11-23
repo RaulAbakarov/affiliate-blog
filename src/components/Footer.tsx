@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.brand}>
-            <h3 className={styles.brandName}>TecHoneStory</h3>
+            <h3 className={styles.brandName}>Oriflame by Vusale</h3>
             <p className={styles.brandDescription}>
               Your trusted source for honest tech reviews and recommendations
             </p>

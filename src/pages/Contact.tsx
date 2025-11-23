@@ -19,8 +19,8 @@ export const Contact: React.FC = () => {
               <Mail className={styles.icon} size={24} />
               <div>
                 <h3 className={styles.itemTitle}>Email</h3>
-                <a href="mailto:contact@techonestory.com" className={styles.link}>
-                  contact@techonestory.com
+                <a href="mailto:contact@oriflamebyvusale.com" className={styles.link}>
+                  contact@oriflamebyvusale.com
                 </a>
               </div>
             </div>

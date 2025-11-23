@@ -14,7 +14,7 @@ export const Privacy: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>1. Introduction</h2>
             <p className={styles.text}>
-              Welcome to TecHoneStory. We respect your privacy and are committed to protecting your personal data. 
+              Welcome to Oriflame by Vusale. We respect your privacy and are committed to protecting your personal data. 
               This privacy policy explains how we collect, use, and safeguard your information when you visit our website.
             </p>
           </section>
@@ -72,7 +72,7 @@ export const Privacy: React.FC = () => {
             <h2 className={styles.sectionTitle}>7. Your Rights</h2>
             <p className={styles.text}>
               You have the right to access, correct, or delete your personal information. Contact us at 
-              contact@techonestory.com for any privacy-related requests.
+              contact@oriflamebyvusale.com for any privacy-related requests.
             </p>
           </section>
 
@@ -87,7 +87,7 @@ export const Privacy: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>9. Contact Us</h2>
             <p className={styles.text}>
-              If you have any questions about this Privacy Policy, please contact us at contact@techonestory.com
+              If you have any questions about this Privacy Policy, please contact us at contact@oriflamebyvusale.com
             </p>
           </section>
         </div>

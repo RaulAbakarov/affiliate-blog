@@ -14,7 +14,7 @@ export const Terms: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
             <p className={styles.text}>
-              By accessing and using TecHoneStory, you accept and agree to be bound by the terms and provisions 
+              By accessing and using Oriflame by Vusale, you accept and agree to be bound by the terms and provisions 
               of this agreement. If you do not agree to these terms, please do not use our website.
             </p>
           </section>
@@ -22,7 +22,7 @@ export const Terms: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>2. Use License</h2>
             <p className={styles.text}>
-              Permission is granted to temporarily access the materials on TecHoneStory for personal, 
+              Permission is granted to temporarily access the materials on Oriflame by Vusale for personal, 
               non-commercial use only. This is the grant of a license, not a transfer of title.
             </p>
           </section>
@@ -51,7 +51,7 @@ export const Terms: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>5. Affiliate Links</h2>
             <p className={styles.text}>
-              TecHoneStory participates in affiliate programs. We may earn commissions from purchases made 
+              Oriflame by Vusale connects customers with authentic Oriflame products. We may earn commissions from sales made 
               through links on our website. This does not affect the price you pay.
             </p>
           </section>
@@ -59,15 +59,15 @@ export const Terms: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>6. Intellectual Property</h2>
             <p className={styles.text}>
-              All content on TecHoneStory, including text, graphics, logos, and images, is the property of 
-              TecHoneStory and protected by copyright laws.
+              All content on Oriflame by Vusale, including text, graphics, logos, and images, is the property of
+              Oriflame by Vusale and protected by copyright laws.
             </p>
           </section>
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>7. Limitation of Liability</h2>
             <p className={styles.text}>
-              TecHoneStory shall not be liable for any damages arising out of or in connection with the use 
+              Oriflame by Vusale shall not be liable for any damages arising out of or in connection with the use 
               or inability to use our website.
             </p>
           </section>
@@ -83,7 +83,7 @@ export const Terms: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>9. Contact Information</h2>
             <p className={styles.text}>
-              For questions about these Terms of Service, please contact us at contact@techonestory.com
+              For questions about these Terms of Service, please contact us at contact@oriflamebyvusale.com
             </p>
           </section>
         </div>

@@ -14,7 +14,7 @@ export const Disclaimer: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>1. General Disclaimer</h2>
             <p className={styles.text}>
-              The information provided by TecHoneStory is for general informational purposes only. All information 
+              The information provided by Oriflame by Vusale is for general informational purposes only. All information 
               on the site is provided in good faith, however we make no representation or warranty of any kind, 
               express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or 
               completeness of any information on the site.
@@ -32,12 +32,11 @@ export const Disclaimer: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>3. Affiliate Disclaimer</h2>
             <p className={styles.text}>
-              TecHoneStory is a participant in the Amazon Services LLC Associates Program, an affiliate advertising 
-              program designed to provide a means for sites to earn advertising fees by advertising and linking to 
-              Amazon.com. We may receive compensation when you click on links to products we review.
+              Oriflame by Vusale is an independent Oriflame consultant providing authentic product recommendations and beauty consultations.
+              We connect customers directly with genuine Oriflame products and may earn commissions from sales.
             </p>
             <p className={styles.text}>
-              As an Amazon Associate, we earn from qualifying purchases. This means that if you purchase a product 
+              All products featured are authentic Oriflame cosmetics. Prices and availability are subject to change. 
               through one of our affiliate links, we receive a small commission at no extra cost to you. This helps 
               support our work and allows us to continue providing quality content.
             </p>
@@ -64,7 +63,7 @@ export const Disclaimer: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>6. Professional Advice</h2>
             <p className={styles.text}>
-              The content on TecHoneStory is not intended to be a substitute for professional advice. Always seek 
+              The content on Oriflame by Vusale is not intended to be a substitute for professional advice. Always seek 
               the advice of qualified professionals with any questions you may have regarding technical issues or 
               product purchases.
             </p>
@@ -90,7 +89,7 @@ export const Disclaimer: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>9. Contact Us</h2>
             <p className={styles.text}>
-              If you have any questions about this Disclaimer, please contact us at contact@techonestory.com
+              If you have any questions about this Disclaimer, please contact us at contact@oriflamebyvusale.com
             </p>
           </section>
         </div>

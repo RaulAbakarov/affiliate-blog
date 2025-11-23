@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
     <div className={styles.homePage}>
       <div className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>TecHoneStory</h1>
+          <h1 className={styles.heroTitle}>Oriflame by Vusale</h1>
           <p className={styles.heroSubtitle}>
             Discover the best products and recommendations for your lifestyle
           </p>

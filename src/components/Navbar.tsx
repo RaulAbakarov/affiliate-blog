@@ -41,7 +41,7 @@ export const Navbar: React.FC = () => {
             to="/" 
             className={`${styles.centerLogo} ${showLogo ? styles.visible : ''}`}
           >
-            TecHoneStory
+            Oriflame by Vusale
           </Link>
 
           <div className={styles.rightNav}></div>

@@ -6,7 +6,7 @@ export const About: React.FC = () => {
     <div className={styles.aboutPage}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>About TecHoneStory</h1>
+          <h1 className={styles.title}>About Oriflame by Vusale</h1>
           <p className={styles.subtitle}>Your Trusted Source for Honest Tech Reviews</p>
         </div>
 
@@ -40,8 +40,8 @@ export const About: React.FC = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Affiliate Disclosure</h2>
             <p className={styles.text}>
-              TecHoneStory participates in the Amazon Services LLC Associates Program, an affiliate advertising program
-              designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
+              Oriflame by Vusale is an independent consultant sharing genuine product reviews and beauty tips.
+              We connect you directly with authentic Oriflame products and personalized consultations.
               When you purchase products through our affiliate links, we may earn a commission at no extra cost to you.
               This helps support our work and allows us to continue providing quality content.
             </p>
