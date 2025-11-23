@@ -3,8 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'react-quill/dist/quill.snow.css';
 import { blogService } from '../utils/blogService';
 import type { AmazonProduct } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 import { ArrowLeft, Plus, Trash2, Save } from 'lucide-react';
 import styles from './BlogEditor.module.css';
+
+const LANGUAGE_TAGS = ['lang:en', 'lang:az'];
 
 // Lazy load ReactQuill to avoid SSR issues with React 19
 const ReactQuill = lazy(() => import('react-quill').then(module => ({ default: module.default })));
@@ -12,6 +15,7 @@ const ReactQuill = lazy(() => import('react-quill').then(module => ({ default: m
 export const BlogEditor: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const isEditMode = Boolean(id); // If id exists, we're in edit mode
 
   const [title, setTitle] = useState('');
@@ -21,6 +25,7 @@ export const BlogEditor: React.FC = () => {
   const [published, setPublished] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
+  const [postLanguage, setPostLanguage] = useState<'en' | 'az'>('en');
   const [amazonProducts, setAmazonProducts] = useState<AmazonProduct[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +41,13 @@ export const BlogEditor: React.FC = () => {
           setPublished(blog.published);
           setTags(blog.tags);
           setAmazonProducts(blog.amazonProducts);
+          // Detect language from tags
+          const langTag = blog.tags.find(tag => LANGUAGE_TAGS.includes(tag));
+          if (langTag === 'lang:az') {
+            setPostLanguage('az');
+          } else {
+            setPostLanguage('en');
+          }
         }
       }
     };
@@ -80,6 +92,11 @@ export const BlogEditor: React.FC = () => {
     setLoading(true);
 
     const slug = blogService.generateSlug(title);
+    
+    // Remove any existing language tags and add the selected one
+    const nonLangTags = tags.filter(tag => !LANGUAGE_TAGS.includes(tag));
+    const finalTags = [...nonLangTags, `lang:${postLanguage}`];
+    
     const blogData = {
       title,
       slug,
@@ -88,7 +105,7 @@ export const BlogEditor: React.FC = () => {
       featuredImage,
       author: 'Admin',
       published,
-      tags,
+      tags: finalTags,
       amazonProducts: amazonProducts.filter(p => p.title && p.whatsappNumber),
     };
 
@@ -207,6 +224,25 @@ export const BlogEditor: React.FC = () => {
                   placeholder="Write your blog content here..."
                 />
               </Suspense>
+            </div>
+
+            {/* Post Language Selector */}
+            <div className={styles.formGroup}>
+              <label className={styles.label}>
+                {t('editor.postLanguage')} *
+              </label>
+              <select
+                value={postLanguage}
+                onChange={(e) => setPostLanguage(e.target.value as 'en' | 'az')}
+                className={styles.input}
+                required
+              >
+                <option value="en">English (EN)</option>
+                <option value="az">Azərbaycan (AZ)</option>
+              </select>
+              <p className={styles.helpText}>
+                {t('editor.postLanguageHelp')}
+              </p>
             </div>
 
             {/* Tags */}

@@ -217,7 +217,9 @@ const translations: Record<Language, any> = {
       removeProduct: 'Remove Product',
       saveAsDraft: 'Save as Draft',
       publish: 'Publish',
-      update: 'Update Post'
+      update: 'Update Post',
+      postLanguage: 'Post Language',
+      postLanguageHelp: 'Select the language for this post. This will automatically add the language tag.'
     },
     login: {
       title: 'Admin Login',
@@ -388,7 +390,9 @@ const translations: Record<Language, any> = {
       removeProduct: 'Məhsulu Sil',
       saveAsDraft: 'Qaralama Kimi Saxla',
       publish: 'Dərc Et',
-      update: 'Yazını Yenilə'
+      update: 'Yazını Yenilə',
+      postLanguage: 'Yazı Dili',
+      postLanguageHelp: 'Bu yazı üçün dili seçin. Bu avtomatik olaraq dil teqini əlavə edəcək.'
     },
     login: {
       title: 'Admin Girişi',

@@ -7,6 +7,8 @@ import { Calendar, User, Tag, ExternalLink, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './BlogPost.module.css';
 
+const LANGUAGE_TAGS = ['lang:en', 'lang:az'];
+
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -89,11 +91,11 @@ export const BlogPost: React.FC = () => {
             </div>
           </div>
 
-          {blog.tags.length > 0 && (
+          {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).length > 0 && (
             <div className={styles.tagsContainer}>
               <Tag size={18} />
               <div className={styles.tags}>
-                {blog.tags.map((tag, index) => (
+                {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).map((tag, index) => (
                   <span
                     key={index}
                     className={styles.tag}

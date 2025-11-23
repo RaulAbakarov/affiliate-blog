@@ -8,9 +8,10 @@ import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
 const POSTS_PER_PAGE = 9;
+const LANGUAGE_TAGS = ['lang:en', 'lang:az'];
 
 export const HomePage: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,16 +34,29 @@ export const HomePage: React.FC = () => {
     loadBlogs();
   }, []);
 
-  // Get all unique tags
-  const allTags = Array.from(new Set(blogs.flatMap(blog => blog.tags))).sort();
+  // Filter blogs by current language
+  const languageTag = `lang:${language}`;
+  const languageFilteredBlogs = blogs.filter(blog => 
+    blog.tags.includes(languageTag)
+  );
+
+  // Get all unique tags excluding language tags
+  const allTags = Array.from(
+    new Set(
+      languageFilteredBlogs.flatMap(blog => 
+        blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag))
+      )
+    )
+  ).sort();
 
   // Filter blogs based on search query and selected tag
-  const filteredBlogs = blogs.filter(blog => {
+  const filteredBlogs = languageFilteredBlogs.filter(blog => {
     const query = searchQuery.toLowerCase();
+    const nonLangTags = blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag));
     const matchesSearch = (
       blog.title.toLowerCase().includes(query) ||
       blog.excerpt.toLowerCase().includes(query) ||
-      blog.tags.some(tag => tag.toLowerCase().includes(query))
+      nonLangTags.some(tag => tag.toLowerCase().includes(query))
     );
     const matchesTag = selectedTag === 'all' || blog.tags.includes(selectedTag);
     return matchesSearch && matchesTag;
@@ -88,7 +102,7 @@ export const HomePage: React.FC = () => {
   // Reset to page 1 when search or sort changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, sortBy, selectedTag]);
+  }, [searchQuery, sortBy, selectedTag, language]);
 
   if (loading) {
     return (
@@ -194,10 +208,10 @@ export const HomePage: React.FC = () => {
                         <Calendar size={16} />
                         <span>{format(new Date(blog.createdAt), 'MMM dd, yyyy')}</span>
                       </div>
-                      {blog.tags.length > 0 && (
+                      {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).length > 0 && (
                         <div className={styles.metaItem}>
                           <Tag size={16} />
-                          <span>{blog.tags[0]}</span>
+                          <span>{blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag))[0]}</span>
                         </div>
                       )}
                     </div>
