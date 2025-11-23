@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, LayoutDashboard, MessageCircle } from 'lucide-react';
+import { LogOut, LayoutDashboard, MessageCircle, Instagram } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export const Navbar: React.FC = () => {
@@ -50,6 +50,15 @@ export const Navbar: React.FC = () => {
           </Link>
 
           <div className={styles.rightNav}>
+            <a 
+              href="https://instagram.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.socialButton}
+              aria-label="Instagram"
+            >
+              <Instagram size={20} />
+            </a>
             <a 
               href="https://wa.me/" 
               target="_blank" 
