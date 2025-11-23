@@ -7,7 +7,7 @@ import { Calendar, User, Tag, ExternalLink, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './BlogPost.module.css';
 
-const LANGUAGE_TAGS = ['lang:en', 'lang:az'];
+const LANGUAGE_TAGS = ['lang:en', 'lang:az', 'lang:ru'];
 
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

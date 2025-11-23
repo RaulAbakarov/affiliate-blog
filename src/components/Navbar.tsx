@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setShowLangMenu(!showLangMenu)}
               >
                 <Globe size={18} />
-                <span>{language === 'en' ? 'EN' : 'AZ'}</span>
+                <span>{language === 'en' ? 'EN' : language === 'az' ? 'AZ' : 'RU'}</span>
               </button>
               {showLangMenu && (
                 <div className={styles.langMenu}>
@@ -74,6 +74,12 @@ export const Navbar: React.FC = () => {
                     onClick={() => { setLanguage('az'); setShowLangMenu(false); }}
                   >
                     Azərbaycan
+                  </button>
+                  <button 
+                    className={`${styles.langOption} ${language === 'ru' ? styles.active : ''}`}
+                    onClick={() => { setLanguage('ru'); setShowLangMenu(false); }}
+                  >
+                    Русский
                   </button>
                 </div>
               )}

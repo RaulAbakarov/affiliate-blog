@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
 const POSTS_PER_PAGE = 9;
-const LANGUAGE_TAGS = ['lang:en', 'lang:az'];
+const LANGUAGE_TAGS = ['lang:en', 'lang:az', 'lang:ru'];
 
 export const HomePage: React.FC = () => {
   const { t, language } = useLanguage();

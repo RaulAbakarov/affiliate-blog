@@ -7,7 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { ArrowLeft, Plus, Trash2, Save } from 'lucide-react';
 import styles from './BlogEditor.module.css';
 
-const LANGUAGE_TAGS = ['lang:en', 'lang:az'];
+const LANGUAGE_TAGS = ['lang:en', 'lang:az', 'lang:ru'];
 
 // Lazy load ReactQuill to avoid SSR issues with React 19
 const ReactQuill = lazy(() => import('react-quill').then(module => ({ default: module.default })));
@@ -25,7 +25,7 @@ export const BlogEditor: React.FC = () => {
   const [published, setPublished] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
-  const [postLanguage, setPostLanguage] = useState<'en' | 'az'>('en');
+  const [postLanguage, setPostLanguage] = useState<'en' | 'az' | 'ru'>('en');
   const [amazonProducts, setAmazonProducts] = useState<AmazonProduct[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -45,6 +45,8 @@ export const BlogEditor: React.FC = () => {
           const langTag = blog.tags.find(tag => LANGUAGE_TAGS.includes(tag));
           if (langTag === 'lang:az') {
             setPostLanguage('az');
+          } else if (langTag === 'lang:ru') {
+            setPostLanguage('ru');
           } else {
             setPostLanguage('en');
           }
@@ -233,12 +235,13 @@ export const BlogEditor: React.FC = () => {
               </label>
               <select
                 value={postLanguage}
-                onChange={(e) => setPostLanguage(e.target.value as 'en' | 'az')}
+                onChange={(e) => setPostLanguage(e.target.value as 'en' | 'az' | 'ru')}
                 className={styles.input}
                 required
               >
                 <option value="en">English (EN)</option>
                 <option value="az">Azərbaycan (AZ)</option>
+                <option value="ru">Русский (RU)</option>
               </select>
               <p className={styles.helpText}>
                 {t('editor.postLanguageHelp')}
