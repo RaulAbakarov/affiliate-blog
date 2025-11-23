@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
-import { Calendar, Tag, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
@@ -14,6 +14,7 @@ export const HomePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'title'>('newest');
+  const [selectedTag, setSelectedTag] = useState<string>('all');
 
   useEffect(() => {
     const loadBlogs = async () => {
@@ -30,14 +31,19 @@ export const HomePage: React.FC = () => {
     loadBlogs();
   }, []);
 
-  // Filter blogs based on search query
+  // Get all unique tags
+  const allTags = Array.from(new Set(blogs.flatMap(blog => blog.tags))).sort();
+
+  // Filter blogs based on search query and selected tag
   const filteredBlogs = blogs.filter(blog => {
     const query = searchQuery.toLowerCase();
-    return (
+    const matchesSearch = (
       blog.title.toLowerCase().includes(query) ||
       blog.excerpt.toLowerCase().includes(query) ||
       blog.tags.some(tag => tag.toLowerCase().includes(query))
     );
+    const matchesTag = selectedTag === 'all' || blog.tags.includes(selectedTag);
+    return matchesSearch && matchesTag;
   });
 
   // Sort filtered blogs
@@ -80,7 +86,7 @@ export const HomePage: React.FC = () => {
   // Reset to page 1 when search or sort changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, sortBy]);
+  }, [searchQuery, sortBy, selectedTag]);
 
   if (loading) {
     return (
@@ -112,7 +118,6 @@ export const HomePage: React.FC = () => {
         {/* Search and Sort Controls */}
         <div className={styles.controls}>
           <div className={styles.searchContainer}>
-            <Search className={styles.searchIcon} size={20} />
             <input
               type="text"
               placeholder="Search by title, description, or tags..."
@@ -120,6 +125,21 @@ export const HomePage: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               className={styles.searchInput}
             />
+          </div>
+
+          <div className={styles.sortContainer}>
+            <label htmlFor="tag" className={styles.sortLabel}>Filter by tag:</label>
+            <select
+              id="tag"
+              value={selectedTag}
+              onChange={(e) => setSelectedTag(e.target.value)}
+              className={styles.sortSelect}
+            >
+              <option value="all">All Tags</option>
+              {allTags.map(tag => (
+                <option key={tag} value={tag}>{tag}</option>
+              ))}
+            </select>
           </div>
 
           <div className={styles.sortContainer}>
