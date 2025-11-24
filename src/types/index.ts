@@ -10,6 +10,8 @@ export interface Blog {
   updatedAt: string;
   published: boolean;
   tags: string[];
+  price?: string;
+  originalPrice?: string;
   amazonProducts: AmazonProduct[];
 }
 

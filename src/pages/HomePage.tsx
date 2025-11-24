@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
@@ -16,7 +16,7 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'title'>('newest');
+  const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'title' | 'priceLowHigh' | 'priceHighLow'>('newest');
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   useEffect(() => {
@@ -71,6 +71,16 @@ export const HomePage: React.FC = () => {
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       case 'title':
         return a.title.localeCompare(b.title);
+      case 'priceLowHigh': {
+        const priceA = a.price ? parseFloat(a.price.replace(/[^0-9.]/g, '')) : Infinity;
+        const priceB = b.price ? parseFloat(b.price.replace(/[^0-9.]/g, '')) : Infinity;
+        return priceA - priceB;
+      }
+      case 'priceHighLow': {
+        const priceA = a.price ? parseFloat(a.price.replace(/[^0-9.]/g, '')) : -Infinity;
+        const priceB = b.price ? parseFloat(b.price.replace(/[^0-9.]/g, '')) : -Infinity;
+        return priceB - priceA;
+      }
       default:
         return 0;
     }
@@ -163,12 +173,14 @@ export const HomePage: React.FC = () => {
             <select
               id="sort"
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest' | 'title')}
+              onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest' | 'title' | 'priceLowHigh' | 'priceHighLow')}
               className={styles.sortSelect}
             >
               <option value="newest">{t('search.newest')}</option>
               <option value="oldest">{t('search.oldest')}</option>
               <option value="title">{t('search.titleAZ')}</option>
+              <option value="priceLowHigh">Price: Low to High</option>
+              <option value="priceHighLow">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -194,26 +206,42 @@ export const HomePage: React.FC = () => {
             <div className={styles.grid}>
               {currentBlogs.map((blog) => (
                 <Link key={blog.id} to={`/blog/${blog.slug}`} className={styles.blogCard}>
-                  <img
-                    src={blog.featuredImage}
-                    alt={blog.title}
-                    className={styles.blogImage}
-                  />
+                  <div className={styles.imageContainer}>
+                    <img
+                      src={blog.featuredImage}
+                      alt={blog.title}
+                      className={styles.blogImage}
+                    />
+                    {blog.originalPrice && blog.price && (
+                      <div className={styles.discountBadge}>
+                        {Math.round((1 - parseFloat(blog.price.replace(/[^0-9.]/g, '')) / parseFloat(blog.originalPrice.replace(/[^0-9.]/g, ''))) * 100)}% OFF
+                      </div>
+                    )}
+                  </div>
                   <div className={styles.blogContent}>
+                    {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).length > 0 && (
+                      <span className={styles.category}>
+                        {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag))[0]}
+                      </span>
+                    )}
                     <h2 className={styles.blogTitle}>{blog.title}</h2>
                     <p className={styles.blogExcerpt}>{blog.excerpt}</p>
                     
-                    <div className={styles.blogMeta}>
-                      <div className={styles.metaItem}>
-                        <Calendar size={16} />
-                        <span>{format(new Date(blog.createdAt), 'MMM dd, yyyy')}</span>
+                    {blog.price && (
+                      <div className={styles.priceContainer}>
+                        {blog.originalPrice && (
+                          <span className={styles.originalPrice}>{blog.originalPrice}</span>
+                        )}
+                        <span className={styles.currentPrice}>{blog.price}</span>
                       </div>
-                      {blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag)).length > 0 && (
-                        <div className={styles.metaItem}>
-                          <Tag size={16} />
-                          <span>{blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag))[0]}</span>
-                        </div>
-                      )}
+                    )}
+                    
+                    <div className={styles.blogFooter}>
+                      <div className={styles.metaItem}>
+                        <Calendar size={14} />
+                        <span>{format(new Date(blog.createdAt), 'MMM dd')}</span>
+                      </div>
+                      <button className={styles.viewButton}>View Details</button>
                     </div>
                   </div>
                 </Link>
