@@ -113,15 +113,15 @@ export const BlogEditor: React.FC = () => {
     try {
       if (isEditMode && id) {
         await blogService.updateBlog(id, blogData);
-        alert('✅ Blog post updated successfully!');
+        alert('✅ Product updated successfully!');
       } else {
         await blogService.createBlog(blogData);
-        alert('✅ Blog post created successfully!');
+        alert('✅ Product created successfully!');
       }
       navigate('/admin');
     } catch (error) {
-      console.error('Error saving blog:', error);
-      alert('❌ Error saving blog post. Please try again.');
+      console.error('Error saving product:', error);
+      alert('❌ Error saving product. Please try again.');
     } finally {
       setLoading(false);
     }

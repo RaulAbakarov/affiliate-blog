@@ -67,7 +67,7 @@ const translations: Record<Language, any> = {
       subtitle: 'Discover the beauty of Swedish cosmetics'
     },
     search: {
-      placeholder: 'Search blog posts...',
+      placeholder: 'Search products...',
       filterByTag: 'Filter by tag',
       allTags: 'All Tags',
       sortBy: 'Sort by',
@@ -78,10 +78,10 @@ const translations: Record<Language, any> = {
     blog: {
       readMore: 'Read More',
       messageForInfo: 'Message for More Information',
-      backToBlog: 'Back to Blog',
+      backToBlog: 'Back to Products',
       products: 'Featured Products',
-      noPosts: 'No blog posts found',
-      noPostsDesc: 'Check back soon for new content!'
+      noPosts: 'No products found',
+      noPostsDesc: 'Check back soon for new products!'
     },
     footer: {
       about: 'About',
@@ -147,7 +147,7 @@ const translations: Record<Language, any> = {
       use: 'Use of Website',
       useText: 'This website is for informational purposes and to facilitate beauty consultations. You agree to use the site only for lawful purposes and in a way that does not infringe upon the rights of others.',
       content: 'Content',
-      contentText: 'All content on this website, including text, images, and blog posts, is the property of Oriflame by Vusale or Oriflame Cosmetics and is protected by copyright laws. You may not reproduce or distribute content without permission.',
+      contentText: 'All content on this website, including text, images, and product posts, is the property of Oriflame by Vusale or Oriflame Cosmetics and is protected by copyright laws. You may not reproduce or distribute content without permission.',
       products: 'Product Information',
       productsText: 'While we strive to provide accurate product information and recommendations, we cannot guarantee specific results. Individual results may vary based on skin type, usage, and other factors.',
       consultations: 'Consultations',
@@ -178,12 +178,12 @@ const translations: Record<Language, any> = {
       dashboard: 'Admin Dashboard',
       welcome: 'Welcome',
       stats: 'Statistics',
-      totalPosts: 'Total Posts',
-      publishedPosts: 'Published Posts',
-      draftPosts: 'Draft Posts',
-      manage: 'Manage Blog Posts',
-      search: 'Search posts...',
-      newPost: 'New Post',
+      totalPosts: 'Total Products',
+      publishedPosts: 'Published Products',
+      draftPosts: 'Draft Products',
+      manage: 'Manage Products',
+      search: 'Search products...',
+      newPost: 'New Product',
       title: 'Title',
       status: 'Status',
       date: 'Date',
@@ -192,23 +192,23 @@ const translations: Record<Language, any> = {
       delete: 'Delete',
       published: 'Published',
       draft: 'Draft',
-      confirmDelete: 'Are you sure you want to delete this post?'
+      confirmDelete: 'Are you sure you want to delete this product?'
     },
     editor: {
-      createPost: 'Create New Post',
-      editPost: 'Edit Post',
-      title: 'Post Title',
-      titlePlaceholder: 'Enter post title',
+      createPost: 'Create New Product',
+      editPost: 'Edit Product',
+      title: 'Product Title',
+      titlePlaceholder: 'Enter product title',
       excerpt: 'Excerpt',
-      excerptPlaceholder: 'Brief description of the post',
+      excerptPlaceholder: 'Brief description of the product',
       content: 'Content',
       tags: 'Tags',
       tagsPlaceholder: 'beauty, skincare, makeup (comma separated)',
       featuredImage: 'Featured Image URL',
       imagePlaceholder: 'https://example.com/image.jpg',
       publishStatus: 'Publish Status',
-      products: 'Products',
-      addProduct: 'Add Product',
+      products: 'Related Products',
+      addProduct: 'Add Related Product',
       productTitle: 'Product Title',
       productDescription: 'Product Description',
       productImage: 'Product Image URL',
@@ -217,9 +217,9 @@ const translations: Record<Language, any> = {
       removeProduct: 'Remove Product',
       saveAsDraft: 'Save as Draft',
       publish: 'Publish',
-      update: 'Update Post',
-      postLanguage: 'Post Language',
-      postLanguageHelp: 'Select the language for this post. This will automatically add the language tag.'
+      update: 'Update Product',
+      postLanguage: 'Product Language',
+      postLanguageHelp: 'Select the language for this product. This will automatically add the language tag.'
     },
     login: {
       title: 'Admin Login',
@@ -240,7 +240,7 @@ const translations: Record<Language, any> = {
       subtitle: 'İsveç kosmetikasının gözəlliyini kəşf edin'
     },
     search: {
-      placeholder: 'Blog yazılarında axtar...',
+      placeholder: 'Məhsullarda axtar...',
       filterByTag: 'Teqə görə süzgəc',
       allTags: 'Bütün Teqlər',
       sortBy: 'Sırala',
@@ -251,10 +251,10 @@ const translations: Record<Language, any> = {
     blog: {
       readMore: 'Daha Ətraflı',
       messageForInfo: 'Ətraflı Məlumat Üçün Mesaj Göndərin',
-      backToBlog: 'Bloqa Qayıt',
+      backToBlog: 'Məhsullara Qayıt',
       products: 'Seçilmiş Məhsullar',
-      noPosts: 'Heç bir blog yazısı tapılmadı',
-      noPostsDesc: 'Tezliklə yeni məzmun üçün yenidən yoxlayın!'
+      noPosts: 'Heç bir məhsul tapılmadı',
+      noPostsDesc: 'Tezliklə yeni məhsullar üçün yenidən yoxlayın!'
     },
     footer: {
       about: 'Haqqında',
@@ -351,12 +351,12 @@ const translations: Record<Language, any> = {
       dashboard: 'Admin Paneli',
       welcome: 'Xoş Gəlmisiniz',
       stats: 'Statistika',
-      totalPosts: 'Ümumi Yazılar',
-      publishedPosts: 'Dərc Edilmiş Yazılar',
-      draftPosts: 'Qaralama Yazılar',
+      totalPosts: 'Ümumi Məhsullar',
+      publishedPosts: 'Dərc Edilmiş Məhsullar',
+      draftPosts: 'Qaralama Məhsullar',
       manage: 'Blog Yazılarını İdarə Et',
-      search: 'Yazılarda axtar...',
-      newPost: 'Yeni Yazı',
+      search: 'Məhsullarda axtar...',
+      newPost: 'Yeni Məhsul',
       title: 'Başlıq',
       status: 'Status',
       date: 'Tarix',
@@ -365,15 +365,15 @@ const translations: Record<Language, any> = {
       delete: 'Sil',
       published: 'Dərc Edilmiş',
       draft: 'Qaralama',
-      confirmDelete: 'Bu yazını silmək istədiyinizə əminsiniz?'
+      confirmDelete: 'Bu məhsulu silmək istədiyinizə əminsiniz?'
     },
     editor: {
-      createPost: 'Yeni Yazı Yarat',
-      editPost: 'Yazını Redaktə Et',
-      title: 'Yazı Başlığı',
-      titlePlaceholder: 'Yazı başlığını daxil edin',
+      createPost: 'Yeni Məhsul Yarat',
+      editPost: 'Məhsulu Redaktə Et',
+      title: 'Məhsul Başlığı',
+      titlePlaceholder: 'Məhsul başlığını daxil edin',
       excerpt: 'Xülasə',
-      excerptPlaceholder: 'Yazının qısa təsviri',
+      excerptPlaceholder: 'Məhsulun qısa təsviri',
       content: 'Məzmun',
       tags: 'Teqlər',
       tagsPlaceholder: 'gözəllik, dəri baxımı, makiyaj (vergüllə ayrılmış)',
@@ -390,9 +390,9 @@ const translations: Record<Language, any> = {
       removeProduct: 'Məhsulu Sil',
       saveAsDraft: 'Qaralama Kimi Saxla',
       publish: 'Dərc Et',
-      update: 'Yazını Yenilə',
-      postLanguage: 'Yazı Dili',
-      postLanguageHelp: 'Bu yazı üçün dili seçin. Bu avtomatik olaraq dil teqini əlavə edəcək.'
+      update: 'Məhsulu Yenilə',
+      postLanguage: 'Məhsul Dili',
+      postLanguageHelp: 'Bu məhsul üçün dili seçin. Bu avtomatik olaraq dil teqini əlavə edəcək.'
     },
     login: {
       title: 'Admin Girişi',
@@ -413,7 +413,7 @@ const translations: Record<Language, any> = {
       subtitle: 'Откройте для себя красоту шведской косметики'
     },
     search: {
-      placeholder: 'Поиск статей...',
+      placeholder: 'Поиск товаров...',
       filterByTag: 'Фильтр по тегу',
       allTags: 'Все теги',
       sortBy: 'Сортировать',
@@ -424,10 +424,10 @@ const translations: Record<Language, any> = {
     blog: {
       readMore: 'Читать далее',
       messageForInfo: 'Напишите для получения информации',
-      backToBlog: 'Вернуться к блогу',
+      backToBlog: 'Вернуться к товарам',
       products: 'Рекомендуемые товары',
-      noPosts: 'Статьи не найдены',
-      noPostsDesc: 'Скоро появится новый контент!'
+      noPosts: 'Товары не найдены',
+      noPostsDesc: 'Скоро появятся новые товары!'
     },
     footer: {
       about: 'О нас',
@@ -524,12 +524,12 @@ const translations: Record<Language, any> = {
       dashboard: 'Панель администратора',
       welcome: 'Добро пожаловать',
       stats: 'Статистика',
-      totalPosts: 'Всего статей',
-      publishedPosts: 'Опубликованные статьи',
-      draftPosts: 'Черновики',
-      manage: 'Управление статьями блога',
-      search: 'Поиск статей...',
-      newPost: 'Новая статья',
+      totalPosts: 'Всего товаров',
+      publishedPosts: 'Опубликованные товары',
+      draftPosts: 'Черновики товаров',
+      manage: 'Управление товарами',
+      search: 'Поиск товаров...',
+      newPost: 'Новый товар',
       title: 'Название',
       status: 'Статус',
       date: 'Дата',
@@ -538,15 +538,15 @@ const translations: Record<Language, any> = {
       delete: 'Удалить',
       published: 'Опубликовано',
       draft: 'Черновик',
-      confirmDelete: 'Вы уверены, что хотите удалить эту статью?'
+      confirmDelete: 'Вы уверены, что хотите удалить этот товар?'
     },
     editor: {
-      createPost: 'Создать новую статью',
-      editPost: 'Редактировать статью',
-      title: 'Название статьи',
-      titlePlaceholder: 'Введите название статьи',
+      createPost: 'Создать новый товар',
+      editPost: 'Редактировать товар',
+      title: 'Название товара',
+      titlePlaceholder: 'Введите название товара',
       excerpt: 'Краткое описание',
-      excerptPlaceholder: 'Краткое описание статьи',
+      excerptPlaceholder: 'Краткое описание товара',
       content: 'Содержание',
       tags: 'Теги',
       tagsPlaceholder: 'красота, уход за кожей, макияж (через запятую)',
@@ -563,9 +563,9 @@ const translations: Record<Language, any> = {
       removeProduct: 'Удалить товар',
       saveAsDraft: 'Сохранить как черновик',
       publish: 'Опубликовать',
-      update: 'Обновить статью',
-      postLanguage: 'Язык статьи',
-      postLanguageHelp: 'Выберите язык для этой статьи. Это автоматически добавит языковой тег.'
+      update: 'Обновить товар',
+      postLanguage: 'Язык товара',
+      postLanguageHelp: 'Выберите язык для этого товара. Это автоматически добавит языковой тег.'
     },
     login: {
       title: 'Вход администратора',
