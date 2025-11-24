@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App.tsx'
 import { LanguageProvider } from './contexts/LanguageContext'
-import VercelAnalytics from './components/VercelAnalytics'
+import { Analytics } from '@vercel/analytics/react'
 
 // Polyfill for React 19 compatibility with react-quill
 // @ts-ignore
@@ -19,6 +19,6 @@ if (!ReactDOM.findDOMNode) {
 createRoot(document.getElementById('root')!).render(
   <LanguageProvider>
     <App />
-    <VercelAnalytics />
+    <Analytics />
   </LanguageProvider>
 )
