@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { updateSEOMetadata, removeStructuredData } from '../utils/seoHelpers';
 import styles from './Contact.module.css';
 import { Mail, MessageCircle, Instagram } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    updateSEOMetadata({
+      title: `${t('nav.contact')} | Oriflame by Vusale`,
+      description: 'Contact Vusale for Oriflame beauty product consultations, orders, and beauty advice. Reach out via WhatsApp, Instagram, or email.',
+      keywords: 'contact, Oriflame consultant, beauty consultation, order products, WhatsApp, Instagram',
+      url: '/contact',
+      type: 'website',
+    });
+    
+    return () => {
+      removeStructuredData();
+    };
+  }, [t]);
   
   return (
     <div className={styles.contactPage}>

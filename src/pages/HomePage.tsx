@@ -5,6 +5,12 @@ import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, Tag, ChevronLeft, ChevronRight, Filter, ArrowUpDown } from 'lucide-react';
 import { format } from 'date-fns';
+import { 
+  updateSEOMetadata, 
+  generateOrganizationStructuredData,
+  injectStructuredData,
+  removeStructuredData 
+} from '../utils/seoHelpers';
 import styles from './HomePage.module.css';
 
 const POSTS_PER_PAGE = 9;
@@ -20,6 +26,25 @@ export const HomePage: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showTagMenu, setShowTagMenu] = useState(false);
   const [showSortMenu, setShowSortMenu] = useState(false);
+
+  useEffect(() => {
+    // Update SEO for homepage
+    updateSEOMetadata({
+      title: 'Oriflame by Vusale - Premium Beauty Products & Skincare',
+      description: 'Discover premium Oriflame beauty products, skincare, cosmetics and wellness solutions. Expert reviews, beauty tips, and exclusive product recommendations by Vusale.',
+      keywords: 'Oriflame, beauty products, skincare, cosmetics, wellness, makeup, beauty tips, Vusale, product reviews',
+      url: '/',
+      type: 'website',
+    });
+    
+    // Inject organization structured data
+    const orgData = generateOrganizationStructuredData();
+    injectStructuredData(orgData);
+    
+    return () => {
+      removeStructuredData();
+    };
+  }, []);
 
   useEffect(() => {
     const loadBlogs = async () => {

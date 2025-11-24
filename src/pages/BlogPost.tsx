@@ -7,6 +7,13 @@ import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, User, Tag, ExternalLink, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
+import { 
+  updateSEOMetadata, 
+  generateArticleStructuredData, 
+  generateBreadcrumbStructuredData,
+  injectStructuredData,
+  removeStructuredData 
+} from '../utils/seoHelpers';
 import styles from './BlogPost.module.css';
 
 const LANGUAGE_TAGS = ['lang:en', 'lang:az', 'lang:ru'];
@@ -24,6 +31,45 @@ export const BlogPost: React.FC = () => {
         try {
           const foundBlog = await blogService.getBlogBySlug(slug);
           setBlog(foundBlog || null);
+          
+          // Update SEO metadata when blog is loaded
+          if (foundBlog) {
+            const nonLangTags = foundBlog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag));
+            
+            // Update meta tags
+            updateSEOMetadata({
+              title: `${foundBlog.title} | Oriflame by Vusale`,
+              description: foundBlog.excerpt,
+              keywords: nonLangTags.join(', '),
+              image: foundBlog.featuredImage,
+              url: `/blog/${foundBlog.slug}`,
+              type: 'article',
+              publishedTime: foundBlog.createdAt,
+              modifiedTime: foundBlog.updatedAt,
+              author: foundBlog.author,
+              tags: nonLangTags,
+            });
+            
+            // Generate and inject structured data
+            const articleData = generateArticleStructuredData({
+              title: foundBlog.title,
+              description: foundBlog.excerpt,
+              image: foundBlog.featuredImage,
+              author: foundBlog.author,
+              publishedDate: foundBlog.createdAt,
+              modifiedDate: foundBlog.updatedAt,
+              url: `/blog/${foundBlog.slug}`,
+              tags: nonLangTags,
+            });
+            
+            const breadcrumbData = generateBreadcrumbStructuredData([
+              { name: 'Home', url: '/' },
+              { name: 'Products', url: '/' },
+              { name: foundBlog.title, url: `/blog/${foundBlog.slug}` },
+            ]);
+            
+            injectStructuredData([articleData, breadcrumbData]);
+          }
         } catch (error) {
           console.error('Error loading blog:', error);
           setBlog(null);
@@ -33,6 +79,11 @@ export const BlogPost: React.FC = () => {
       }
     };
     loadBlog();
+    
+    // Cleanup structured data on unmount
+    return () => {
+      removeStructuredData();
+    };
   }, [slug]);
 
   if (loading) {

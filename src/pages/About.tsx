@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { updateSEOMetadata, removeStructuredData } from '../utils/seoHelpers';
 import styles from './About.module.css';
 
 export const About: React.FC = () => {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    updateSEOMetadata({
+      title: `${t('nav.about')} | Oriflame by Vusale`,
+      description: 'Learn more about Vusale and her experience with Oriflame premium beauty products. Expert beauty consultant sharing product reviews and beauty tips.',
+      keywords: 'about, Oriflame consultant, beauty expert, Vusale, beauty advisor',
+      url: '/about',
+      type: 'website',
+    });
+    
+    return () => {
+      removeStructuredData();
+    };
+  }, [t]);
   
   return (
     <div className={styles.aboutPage}>
