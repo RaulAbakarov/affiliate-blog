@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft, ChevronRight, Search, Filter, ArrowUpDown } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
@@ -134,6 +134,7 @@ export const HomePage: React.FC = () => {
         {/* Search and Sort Controls */}
         <div className={styles.controls}>
           <div className={styles.searchContainer}>
+            <Search className={styles.searchIcon} size={20} />
             <input
               type="text"
               placeholder={t('search.placeholder')}
@@ -144,12 +145,13 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className={styles.sortContainer}>
-            <label htmlFor="tag" className={styles.sortLabel}>{t('search.filterByTag')}:</label>
+            <Filter size={18} className={styles.controlIcon} />
             <select
               id="tag"
               value={selectedTag}
               onChange={(e) => setSelectedTag(e.target.value)}
               className={styles.sortSelect}
+              title={t('search.filterByTag')}
             >
               <option value="all">{t('search.allTags')}</option>
               {allTags.map(tag => (
@@ -159,12 +161,13 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className={styles.sortContainer}>
-            <label htmlFor="sort" className={styles.sortLabel}>{t('search.sortBy')}:</label>
+            <ArrowUpDown size={18} className={styles.controlIcon} />
             <select
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest' | 'title')}
               className={styles.sortSelect}
+              title={t('search.sortBy')}
             >
               <option value="newest">{t('search.newest')}</option>
               <option value="oldest">{t('search.oldest')}</option>

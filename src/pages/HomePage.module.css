@@ -70,7 +70,7 @@
 
 .controls {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
   align-items: center;
@@ -79,12 +79,21 @@
 .searchContainer {
   position: relative;
   flex: 1;
-  min-width: 280px;
+  min-width: 200px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
 }
 
 .searchInput {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
@@ -101,23 +110,37 @@
 .sortContainer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-}
-
-.sortLabel {
-  font-weight: 600;
-  color: #4b5563;
-  white-space: nowrap;
-}
-
-.sortSelect {
+  gap: 0.5rem;
+  background: white;
   padding: 0.75rem 1rem;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
-  font-size: 1rem;
-  background: white;
-  cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.sortContainer:hover {
+  border-color: #d1d5db;
+}
+
+.sortContainer:focus-within {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.controlIcon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.sortSelect {
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  background: transparent;
+  cursor: pointer;
+  flex: 1;
+  min-width: 80px;
+  outline: none;
 }
 
 .sortSelect:focus {
@@ -356,21 +379,27 @@
   }
 
   .controls {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .searchContainer {
-    min-width: 100%;
-    order: 1;
+    flex: 1;
+    min-width: 140px;
   }
 
   .sortContainer {
-    width: 100%;
-    order: 2;
+    flex: 0 0 auto;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .controlIcon {
+    width: 16px;
+    height: 16px;
   }
 
   .sortSelect {
-    flex: 1;
+    font-size: 0.875rem;
+    min-width: 60px;
   }
 
   .grid {
