@@ -90,7 +90,9 @@ export const BlogEditor: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
-    const slug = blogService.generateSlug(title);
+    // Include language in slug to allow same title in different languages
+    const baseSlug = blogService.generateSlug(title);
+    const slug = `${baseSlug}-${postLanguage}`;
     
     // Remove any existing language tags and add the selected one
     const nonLangTags = tags.filter(tag => !LANGUAGE_TAGS.includes(tag));
