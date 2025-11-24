@@ -17,7 +17,8 @@ export const HomePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'title'>('newest');
-  const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [showTagMenu, setShowTagMenu] = useState(false);
 
   useEffect(() => {
     const loadBlogs = async () => {
@@ -49,7 +50,7 @@ export const HomePage: React.FC = () => {
     )
   ).sort();
 
-  // Filter blogs based on search query and selected tag
+  // Filter blogs based on search query and selected tags
   const filteredBlogs = languageFilteredBlogs.filter(blog => {
     const query = searchQuery.toLowerCase();
     const nonLangTags = blog.tags.filter(tag => !LANGUAGE_TAGS.includes(tag));
@@ -58,8 +59,8 @@ export const HomePage: React.FC = () => {
       blog.excerpt.toLowerCase().includes(query) ||
       nonLangTags.some(tag => tag.toLowerCase().includes(query))
     );
-    const matchesTag = selectedTag === 'all' || blog.tags.includes(selectedTag);
-    return matchesSearch && matchesTag;
+    const matchesTags = selectedTags.length === 0 || selectedTags.some(tag => blog.tags.includes(tag));
+    return matchesSearch && matchesTags;
   });
 
   // Sort filtered blogs
@@ -102,7 +103,17 @@ export const HomePage: React.FC = () => {
   // Reset to page 1 when search or sort changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, sortBy, selectedTag, language]);
+  }, [searchQuery, sortBy, selectedTags, language]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const removeTag = (tag: string) => {
+    setSelectedTags(prev => prev.filter(t => t !== tag));
+  };
 
   if (loading) {
     return (
@@ -144,37 +155,71 @@ export const HomePage: React.FC = () => {
             />
           </div>
 
-          <div className={styles.sortContainer}>
-            <Filter size={18} className={styles.controlIcon} />
-            <select
-              id="tag"
-              value={selectedTag}
-              onChange={(e) => setSelectedTag(e.target.value)}
-              className={styles.sortSelect}
+          <div className={styles.iconButtonContainer}>
+            <button
+              className={`${styles.iconButton} ${showTagMenu ? styles.active : ''}`}
+              onClick={() => setShowTagMenu(!showTagMenu)}
               title={t('search.filterByTag')}
             >
-              <option value="all">{t('search.allTags')}</option>
-              {allTags.map(tag => (
-                <option key={tag} value={tag}>{tag}</option>
-              ))}
-            </select>
+              <Filter size={18} />
+            </button>
+            {showTagMenu && (
+              <div className={styles.tagMenu}>
+                {allTags.map(tag => (
+                  <label key={tag} className={styles.tagMenuItem}>
+                    <input
+                      type="checkbox"
+                      checked={selectedTags.includes(tag)}
+                      onChange={() => toggleTag(tag)}
+                      className={styles.tagCheckbox}
+                    />
+                    <span>{tag}</span>
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className={styles.sortContainer}>
-            <ArrowUpDown size={18} className={styles.controlIcon} />
-            <select
-              id="sort"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest' | 'title')}
-              className={styles.sortSelect}
-              title={t('search.sortBy')}
+          <div className={styles.iconButtonContainer}>
+            <button
+              className={styles.iconButton}
+              onClick={() => {
+                const sortOrder: ('newest' | 'oldest' | 'title')[] = ['newest', 'oldest', 'title'];
+                const currentIndex = sortOrder.indexOf(sortBy);
+                const nextIndex = (currentIndex + 1) % sortOrder.length;
+                setSortBy(sortOrder[nextIndex]);
+              }}
+              title={t('search.sortBy') + ': ' + t(`search.${sortBy}`)}
             >
-              <option value="newest">{t('search.newest')}</option>
-              <option value="oldest">{t('search.oldest')}</option>
-              <option value="title">{t('search.titleAZ')}</option>
-            </select>
+              <ArrowUpDown size={18} />
+            </button>
           </div>
         </div>
+
+        {/* Selected Tags Display */}
+        {selectedTags.length > 0 && (
+          <div className={styles.selectedTagsContainer}>
+            {selectedTags.map(tag => (
+              <span key={tag} className={styles.selectedTag}>
+                <Tag size={14} />
+                {tag}
+                <button
+                  onClick={() => removeTag(tag)}
+                  className={styles.removeTagButton}
+                  aria-label="Remove tag"
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+            <button
+              onClick={() => setSelectedTags([])} 
+              className={styles.clearAllTags}
+            >
+              Clear all
+            </button>
+          </div>
+        )}
 
         {/* Results Count */}
         {searchQuery && (

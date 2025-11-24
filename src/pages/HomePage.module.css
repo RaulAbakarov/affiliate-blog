@@ -70,8 +70,8 @@
 
 .controls {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -105,6 +105,123 @@
   outline: none;
   border-color: #8b5cf6;
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.iconButtonContainer {
+  position: relative;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.iconButton:hover {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+  background: #f9fafb;
+}
+
+.iconButton.active {
+  border-color: #8b5cf6;
+  background: #f3e8ff;
+  color: #8b5cf6;
+}
+
+.tagMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.tagMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tagMenuItem:hover {
+  background: #f9fafb;
+}
+
+.tagCheckbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #8b5cf6;
+}
+
+.selectedTagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.selectedTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+  color: #1e40af;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.removeTagButton {
+  background: none;
+  border: none;
+  color: #1e40af;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0;
+  margin-left: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.removeTagButton:hover {
+  transform: scale(1.2);
+}
+
+.clearAllTags {
+  padding: 0.5rem 0.75rem;
+  background: #fee2e2;
+  color: #991b1b;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearAllTags:hover {
+  background: #fecaca;
+  transform: scale(1.05);
 }
 
 .sortContainer {
@@ -141,12 +258,6 @@
   flex: 1;
   min-width: 80px;
   outline: none;
-}
-
-.sortSelect:focus {
-  outline: none;
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
 .resultsCount {
@@ -534,5 +645,45 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Additional Mobile Styles for Icon Buttons */
+@media (max-width: 768px) {
+  .searchInput {
+    font-size: 0.875rem !important;
+    padding: 0.625rem 0.75rem 0.625rem 2.5rem !important;
+  }
+
+  .searchIcon {
+    left: 0.75rem !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .iconButton {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .iconButton svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .tagMenu {
+    right: auto !important;
+    left: 0 !important;
+    min-width: 180px !important;
+  }
+
+  .selectedTag {
+    font-size: 0.8125rem !important;
+    padding: 0.375rem 0.625rem !important;
+  }
+
+  .clearAllTags {
+    font-size: 0.8125rem !important;
+    padding: 0.375rem 0.625rem !important;
   }
 }
