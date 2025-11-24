@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.oriflamebyvusale.com/</loc>
+    <loc>https://oriflamebyvusale.vercel.app/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.oriflamebyvusale.com/about</loc>
+    <loc>https://oriflamebyvusale.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.oriflamebyvusale.com/contact</loc>
+    <loc>https://oriflamebyvusale.vercel.app/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.oriflamebyvusale.com/privacy</loc>
+    <loc>https://oriflamebyvusale.vercel.app/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.oriflamebyvusale.com/terms</loc>
+    <loc>https://oriflamebyvusale.vercel.app/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.oriflamebyvusale.com/disclaimer</loc>
+    <loc>https://oriflamebyvusale.vercel.app/disclaimer</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

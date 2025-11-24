@@ -19,7 +19,7 @@ export interface SEOMetadata {
  * Update document title and meta tags dynamically
  */
 export const updateSEOMetadata = (metadata: SEOMetadata) => {
-  const baseUrl = 'https://www.oriflamebyvusale.com';
+  const baseUrl = 'https://oriflamebyvusale.vercel.app';
   
   // Update title
   document.title = metadata.title;
@@ -102,7 +102,7 @@ export const generateArticleStructuredData = (data: {
   url: string;
   tags?: string[];
 }) => {
-  const baseUrl = 'https://www.oriflamebyvusale.com';
+  const baseUrl = 'https://oriflamebyvusale.vercel.app';
   
   return {
     '@context': 'https://schema.org',
@@ -136,7 +136,7 @@ export const generateArticleStructuredData = (data: {
  * Generate JSON-LD structured data for the website/organization
  */
 export const generateOrganizationStructuredData = () => {
-  const baseUrl = 'https://www.oriflamebyvusale.com';
+  const baseUrl = 'https://oriflamebyvusale.vercel.app';
   
   return {
     '@context': 'https://schema.org',
@@ -161,7 +161,7 @@ export const generateOrganizationStructuredData = () => {
  * Generate breadcrumb structured data
  */
 export const generateBreadcrumbStructuredData = (items: { name: string; url: string }[]) => {
-  const baseUrl = 'https://www.oriflamebyvusale.com';
+  const baseUrl = 'https://oriflamebyvusale.vercel.app';
   
   return {
     '@context': 'https://schema.org',

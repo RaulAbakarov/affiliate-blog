@@ -4,7 +4,7 @@ import { blogService } from '../utils/blogService';
  * Generate sitemap.xml for search engines
  */
 export const generateSitemap = async (): Promise<string> => {
-  const baseUrl = 'https://www.oriflamebyvusale.com';
+  const baseUrl = 'https://oriflamebyvusale.vercel.app';
   const currentDate = new Date().toISOString();
   
   // Static pages with priorities

@@ -17,7 +17,7 @@ Your website now has comprehensive SEO optimizations! Here's what to do next:
 ### 2. Google Search Console Setup (CRITICAL!)
 1. Visit: https://search.google.com/search-console
 2. Click "Add Property"
-3. Enter: `https://www.oriflamebyvusale.com`
+3. Enter: `https://oriflamebyvusale.vercel.app`
 4. Verify ownership:
    - **Option A (Easiest):** Domain provider (DNS verification)
    - **Option B:** HTML file upload to `/public`
@@ -32,7 +32,7 @@ Your website now has comprehensive SEO optimizations! Here's what to do next:
 1. Visit: https://www.bing.com/webmasters
 2. Add your site
 3. Import settings from Google Search Console (easiest)
-4. Submit sitemap: `https://www.oriflamebyvusale.com/sitemap.xml`
+4. Submit sitemap: `https://oriflamebyvusale.vercel.app/sitemap.xml`
 
 ### 4. Request Immediate Indexing
 After submitting sitemap, request indexing for key pages:

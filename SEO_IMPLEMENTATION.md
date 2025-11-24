@@ -122,14 +122,14 @@ Implemented Schema.org markup:
 ### Immediate Actions Required:
 1. ✅ Deploy to production
 2. ⚠️ Verify domain in Google Search Console
-3. ⚠️ Submit sitemap to Google: `https://www.oriflamebyvusale.com/sitemap.xml`
+3. ⚠️ Submit sitemap to Google: `https://oriflamebyvusale.vercel.app/sitemap.xml`
 4. ⚠️ Submit sitemap to Bing Webmaster Tools
 5. ⚠️ Create and upload `og-image.jpg` (1200x630px) for social sharing
 6. ⚠️ Create and upload `logo.png` for structured data
 
 ### Google Search Console Setup:
 1. Go to: https://search.google.com/search-console
-2. Add property: `https://www.oriflamebyvusale.com`
+2. Add property: `https://oriflamebyvusale.vercel.app`
 3. Verify ownership (DNS or HTML file)
 4. Submit sitemap: Sitemaps → Add new sitemap → `sitemap.xml`
 5. Request indexing for key pages
@@ -222,7 +222,7 @@ open http://localhost:5173/sitemap.xml
 
 # Validate structured data
 # Visit: https://search.google.com/test/rich-results
-# Enter: https://www.oriflamebyvusale.com/blog/[slug]
+# Enter: https://oriflamebyvusale.vercel.app/blog/[slug]
 ```
 
 ## Contact for SEO Questions
