@@ -19,8 +19,6 @@ export const BlogEditor: React.FC = () => {
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [featuredImage, setFeaturedImage] = useState('');
-  const [price, setPrice] = useState('');
-  const [originalPrice, setOriginalPrice] = useState('');
   const [published, setPublished] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
@@ -37,8 +35,6 @@ export const BlogEditor: React.FC = () => {
           setExcerpt(blog.excerpt);
           setContent(blog.content);
           setFeaturedImage(blog.featuredImage);
-          setPrice(blog.price || '');
-          setOriginalPrice(blog.originalPrice || '');
           setPublished(blog.published);
           setTags(blog.tags);
           setAmazonProducts(blog.amazonProducts);
@@ -106,8 +102,6 @@ export const BlogEditor: React.FC = () => {
       excerpt,
       content,
       featuredImage,
-      price: price || undefined,
-      originalPrice: originalPrice || undefined,
       author: 'Admin',
       published,
       tags: finalTags,
@@ -198,33 +192,6 @@ export const BlogEditor: React.FC = () => {
                   className={styles.imagePreview}
                 />
               )}
-            </div>
-
-            {/* Price Fields */}
-            <div className={styles.formGroup}>
-              <label className={styles.label}>
-                Current Price
-              </label>
-              <input
-                type="text"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className={styles.input}
-                placeholder="e.g. $29.99 or 49.99 AZN"
-              />
-            </div>
-
-            <div className={styles.formGroup}>
-              <label className={styles.label}>
-                Original Price (Optional - for showing discount)
-              </label>
-              <input
-                type="text"
-                value={originalPrice}
-                onChange={(e) => setOriginalPrice(e.target.value)}
-                className={styles.input}
-                placeholder="e.g. $39.99 or 69.99 AZN"
-              />
             </div>
 
             {/* Content Editor */}

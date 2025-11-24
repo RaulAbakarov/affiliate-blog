@@ -82,21 +82,6 @@ export const BlogPost: React.FC = () => {
         <div className={styles.header}>
           <h1 className={styles.title}>{blog.title}</h1>
           
-          {/* Price Section */}
-          {blog.price && (
-            <div className={styles.priceSection}>
-              {blog.originalPrice && (
-                <span className={styles.originalPrice}>{blog.originalPrice}</span>
-              )}
-              <span className={styles.currentPrice}>{blog.price}</span>
-              {blog.originalPrice && (
-                <span className={styles.discountBadge}>
-                  {Math.round(((parseFloat(blog.originalPrice.replace(/[^0-9.]/g, '')) - parseFloat(blog.price.replace(/[^0-9.]/g, ''))) / parseFloat(blog.originalPrice.replace(/[^0-9.]/g, ''))) * 100)}% OFF
-                </span>
-              )}
-            </div>
-          )}
-
           <div className={styles.metaContainer}>
             <div className={styles.metaItem}>
               <User size={18} />
