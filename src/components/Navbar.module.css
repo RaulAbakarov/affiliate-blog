@@ -289,6 +289,16 @@
 
   .centerLogo {
     font-size: 1.25rem;
+    left: 0;
+    transform: translateX(0) translateY(-20px);
+  }
+
+  .centerLogo.visible {
+    transform: translateX(0) translateY(0);
+  }
+
+  .centerLogo:hover {
+    transform: translateX(0) translateY(0) scale(1.05);
   }
 
   .logoImage {
@@ -346,6 +356,16 @@
 
   .centerLogo {
     font-size: 1rem;
+    left: 0;
+    transform: translateX(0) translateY(-20px);
+  }
+
+  .centerLogo.visible {
+    transform: translateX(0) translateY(0);
+  }
+
+  .centerLogo:hover {
+    transform: translateX(0) translateY(0) scale(1.05);
   }
 
   .logoImage {
