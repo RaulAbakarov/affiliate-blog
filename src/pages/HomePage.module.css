@@ -89,6 +89,8 @@
   transform: translateY(-50%);
   color: #9ca3af;
   pointer-events: none;
+  z-index: 1;
+  display: block;
 }
 
 .searchInput {
@@ -123,6 +125,13 @@
   color: #6b7280;
   cursor: pointer;
   transition: all 0.3s ease;
+  padding: 0;
+}
+
+.iconButton svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .iconButton:hover {
@@ -189,6 +198,12 @@
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 600;
+}
+
+.selectedTag svg {
+  width: 14px;
+  height: 14px;
+  display: block;
 }
 
 .removeTagButton {

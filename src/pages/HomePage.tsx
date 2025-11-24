@@ -115,6 +115,21 @@ export const HomePage: React.FC = () => {
     setSelectedTags(prev => prev.filter(t => t !== tag));
   };
 
+  // Close tag menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest(`.${styles.iconButtonContainer}`)) {
+        setShowTagMenu(false);
+      }
+    };
+
+    if (showTagMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showTagMenu]);
+
   if (loading) {
     return (
       <div className="loading-container">
