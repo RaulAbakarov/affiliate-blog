@@ -82,20 +82,9 @@
   min-width: 200px;
 }
 
-.searchIcon {
-  position: absolute;
-  left: 0.875rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #9ca3af;
-  pointer-events: none;
-  z-index: 1;
-  display: block;
-}
-
 .searchInput {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  padding: 0.75rem 1rem;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
@@ -667,13 +656,7 @@
 @media (max-width: 768px) {
   .searchInput {
     font-size: 0.875rem !important;
-    padding: 0.625rem 0.75rem 0.625rem 2.5rem !important;
-  }
-
-  .searchIcon {
-    left: 0.75rem !important;
-    width: 16px !important;
-    height: 16px !important;
+    padding: 0.625rem 0.75rem !important;
   }
 
   .iconButton {

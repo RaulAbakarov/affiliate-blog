@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { blogService } from '../utils/blogService';
 import type { Blog } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Calendar, Tag, ChevronLeft, ChevronRight, Search, Filter, ArrowUpDown } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft, ChevronRight, Filter, ArrowUpDown } from 'lucide-react';
 import { format } from 'date-fns';
 import styles from './HomePage.module.css';
 
@@ -19,6 +19,7 @@ export const HomePage: React.FC = () => {
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'title'>('newest');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showTagMenu, setShowTagMenu] = useState(false);
+  const [showSortMenu, setShowSortMenu] = useState(false);
 
   useEffect(() => {
     const loadBlogs = async () => {
@@ -121,14 +122,15 @@ export const HomePage: React.FC = () => {
       const target = event.target as HTMLElement;
       if (!target.closest(`.${styles.iconButtonContainer}`)) {
         setShowTagMenu(false);
+        setShowSortMenu(false);
       }
     };
 
-    if (showTagMenu) {
+    if (showTagMenu || showSortMenu) {
       document.addEventListener('mousedown', handleClickOutside);
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }
-  }, [showTagMenu]);
+  }, [showTagMenu, showSortMenu]);
 
   if (loading) {
     return (
@@ -160,7 +162,6 @@ export const HomePage: React.FC = () => {
         {/* Search and Sort Controls */}
         <div className={styles.controls}>
           <div className={styles.searchContainer}>
-            <Search className={styles.searchIcon} size={20} />
             <input
               type="text"
               placeholder={t('search.placeholder')}
@@ -197,17 +198,55 @@ export const HomePage: React.FC = () => {
 
           <div className={styles.iconButtonContainer}>
             <button
-              className={styles.iconButton}
-              onClick={() => {
-                const sortOrder: ('newest' | 'oldest' | 'title')[] = ['newest', 'oldest', 'title'];
-                const currentIndex = sortOrder.indexOf(sortBy);
-                const nextIndex = (currentIndex + 1) % sortOrder.length;
-                setSortBy(sortOrder[nextIndex]);
-              }}
-              title={t('search.sortBy') + ': ' + t(`search.${sortBy}`)}
+              className={`${styles.iconButton} ${showSortMenu ? styles.active : ''}`}
+              onClick={() => setShowSortMenu(!showSortMenu)}
+              title={t('search.sortBy')}
             >
               <ArrowUpDown size={18} />
             </button>
+            {showSortMenu && (
+              <div className={styles.tagMenu}>
+                <label className={styles.tagMenuItem}>
+                  <input
+                    type="radio"
+                    name="sort"
+                    checked={sortBy === 'newest'}
+                    onChange={() => {
+                      setSortBy('newest');
+                      setShowSortMenu(false);
+                    }}
+                    className={styles.tagCheckbox}
+                  />
+                  <span>{t('search.newest')}</span>
+                </label>
+                <label className={styles.tagMenuItem}>
+                  <input
+                    type="radio"
+                    name="sort"
+                    checked={sortBy === 'oldest'}
+                    onChange={() => {
+                      setSortBy('oldest');
+                      setShowSortMenu(false);
+                    }}
+                    className={styles.tagCheckbox}
+                  />
+                  <span>{t('search.oldest')}</span>
+                </label>
+                <label className={styles.tagMenuItem}>
+                  <input
+                    type="radio"
+                    name="sort"
+                    checked={sortBy === 'title'}
+                    onChange={() => {
+                      setSortBy('title');
+                      setShowSortMenu(false);
+                    }}
+                    className={styles.tagCheckbox}
+                  />
+                  <span>{t('search.titleAZ')}</span>
+                </label>
+              </div>
+            )}
           </div>
         </div>
 
